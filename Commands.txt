@@ -1,0 +1,31 @@
+Maintaining thebchange in file-Vaersion cOtrol/Source Control.
+
+steps-
+Create empty repo
+open git bash
+
+1.git init
+2.notepad filename
+3.git log- to view alll the versions
+4.git status- red -if some changes is presennt and not stored or commit
+		green- if all changes are stored in primary storage
+		clean- if changes are stored in disk.
+5.git add .  - to store the changes in primary storage (.) -current directory
+
+6.git commit -m 'message'- final commit
+
+7. git checkout hashcode(5 digits) to view that paricular version what was the state of object.
+
+8.git checkout master- return to master 
+
+9.git remote -v
+	to view all the github links 
+-----------------------------------
+Create repo on github
+----
+
+10.git add name link- to add the link into machine.
+11.git push name master- to push the local machine changes to cloud.
+
+
+ 
