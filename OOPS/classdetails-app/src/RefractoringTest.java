@@ -9,7 +9,7 @@ public class RefractoringTest {
 	public static void main(String[] args) throws ClassNotFoundException {
 		// TODO Auto-generated method stub
 		
-		 NeedForRefractingAnnotaion at=new NeedForRefractingAnnotaion();
+		// NeedForRefractingAnnotaion at=new NeedForRefractingAnnotaion();
 		
 		 String className="NeedForRefractingAnnotaion";
 		 Class c=Class.forName(className);
