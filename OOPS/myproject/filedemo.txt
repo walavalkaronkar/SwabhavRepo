@@ -1,0 +1,3 @@
+
+this is string written by BufferedOutputStream
+this is string written by BufferedOutputStream

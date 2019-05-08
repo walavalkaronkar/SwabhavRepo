@@ -1,10 +1,14 @@
 package com.techlabs.account;
 
-public class Account {
+import java.io.Serializable;
 
+public class Account implements Serializable{
+
+	private final static long serialVersionUID =1000; 
 	private String accno;
 	private String name;
 	private double balance;
+	private String lname;
 	private static int noOfAccounts;
 	
 	static
@@ -32,13 +36,13 @@ public class Account {
 		return name;
 	}
 
-	public double getBalance() {
-		return balance;
-	}
+	//public double getBalance() {
+	//	return balance;
+	//}
 	
 	@Override
 	public String toString() {
-		return " "+accno+ " "+name+" "+balance;
+		return " "+accno+ " "+name+" "+balance+" "+lname;
 	}
 
 	public static  int countNoOfAccounts()
@@ -47,11 +51,11 @@ public class Account {
 	}
 	public void deposit(double amount)
 	{
-		balance=balance+amount;
+		//balance=balance+amount;
 		System.out.println("Amount Added");
 	}
 	
-	public void withdraw(double amount)
+	/*public void withdraw(double amount)
 	{
 		if(amount <= balance-500)
 		{
@@ -62,7 +66,7 @@ public class Account {
 		{
 			System.out.println("Insufficent Balance");
 		}
-	}
+	}*/
 
 	@Override
 	public boolean equals(Object obj) {
@@ -75,10 +79,10 @@ public class Account {
 		{
 			return false;
 		}
-		else if(balance!=acc.balance)
-		{
-			return false;
-		}
+		//else if(balance!=acc.balance)
+		//{
+		//	return false;
+		//}
 		
 		return true;
 		
