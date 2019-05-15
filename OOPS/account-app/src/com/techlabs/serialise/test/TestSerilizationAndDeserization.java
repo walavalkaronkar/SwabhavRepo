@@ -11,7 +11,7 @@ public class TestSerilizationAndDeserization {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		String account="Account.ser";
 		
-		//Account acc=new Account("1","Onkar",1200);
+		//Account acc=new Account("1","ABCD",3700);
 		//System.out.println("Before Serialisation"+acc);
 		//SerializeAccount.serialize(acc, account);
 		

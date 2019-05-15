@@ -7,7 +7,7 @@ import com.techlabs.guitar.enums.Wood;
 import com.techlabs.inventory.Inventory;
 
 public class SearchTest {
-
+/*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Inventory inventory=new Inventory();
@@ -23,4 +23,5 @@ public class SearchTest {
 		inventory.addGuitar("2", Builder.GIBSON, "1212", Type.ELECTRIC, Wood.BRAZILIAN, Wood.ALDER, 1200);
 		inventory.addGuitar("3", Builder.FENDER, "1212", Type.ACOSTIC, Wood.ALDER, Wood.ALDER, 1500);
 	}
+	*/
 }

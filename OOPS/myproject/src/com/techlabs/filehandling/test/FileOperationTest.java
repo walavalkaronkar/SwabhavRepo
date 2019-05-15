@@ -1,6 +1,6 @@
 package com.techlabs.filehandling.test;
 
-import com.techlabs.filehandling.FileOperation;
+import com.techlabs.filehandling.FileOperator;
 
 public class FileOperationTest {
 
@@ -9,9 +9,9 @@ public class FileOperationTest {
 		String s="\nthis is string written by BufferedOutputStream";
 		try
 		{
-			FileOperation.readFromFile();
-			FileOperation.writeToFile(s);
-			FileOperation.appendToFile(s);
+			FileOperator.readFromFile();
+			FileOperator.writeToFile(s);
+			FileOperator.appendToFile(s);
 		}
 		catch(Exception e)
 		{

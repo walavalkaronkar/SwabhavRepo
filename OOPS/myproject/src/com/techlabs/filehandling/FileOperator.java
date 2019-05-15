@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class FileOperation {
+public class FileOperator {
 
 	
 	public static void readFromFile() throws IOException

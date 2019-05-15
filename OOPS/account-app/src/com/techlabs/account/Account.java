@@ -8,14 +8,14 @@ public class Account implements Serializable{
 	private String accno;
 	private String name;
 	private double balance;
-	private String lname;
-	private static int noOfAccounts;
+	//private String lname;
+	//private static int noOfAccounts;
 	
-	static
+	/*static
 	{
 		noOfAccounts=0;
 		System.out.println("Static block");
-	}
+	}*/
 
 	
 	public Account(String accno,String name,double balance)
@@ -23,8 +23,8 @@ public class Account implements Serializable{
 		this.accno=accno;
 		this.name=name;
 		this.balance=balance;
-		noOfAccounts++;
-		System.out.println("Instance Block");
+		//noOfAccounts++;
+		//System.out.println("Instance Block");
 	}
 	
 	//Getters
@@ -42,9 +42,10 @@ public class Account implements Serializable{
 	
 	@Override
 	public String toString() {
-		return " "+accno+ " "+name+" "+balance+" "+lname;
+		return " "+accno+ " "+name+" "+balance+" ";
 	}
 
+	/*
 	public static  int countNoOfAccounts()
 	{
 		return noOfAccounts;
@@ -55,7 +56,7 @@ public class Account implements Serializable{
 		System.out.println("Amount Added");
 	}
 	
-	/*public void withdraw(double amount)
+	public void withdraw(double amount)
 	{
 		if(amount <= balance-500)
 		{
@@ -66,7 +67,7 @@ public class Account implements Serializable{
 		{
 			System.out.println("Insufficent Balance");
 		}
-	}*/
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -87,6 +88,6 @@ public class Account implements Serializable{
 		return true;
 		
 	}
-	
+	*/
 	
 }

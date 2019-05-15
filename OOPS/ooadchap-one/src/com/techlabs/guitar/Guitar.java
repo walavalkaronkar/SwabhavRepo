@@ -6,7 +6,7 @@ import com.techlabs.guitar.enums.Wood;
 
 public class Guitar {
 
-	private String serialNumber,model;
+	/*private String serialNumber,model;
 	private double price;
 	private Builder builder;
 	private Type type;
@@ -46,6 +46,6 @@ public class Guitar {
 		return "Guitar [serialNumber=" + serialNumber + ", model=" + model + ", price=" + price + ", builder=" + builder
 				+ ", type=" + type + ", backwood=" + backwood + ", topwood=" + topwood + "]";
 	}
-	
+	*/
 	
 }

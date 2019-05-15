@@ -5,7 +5,7 @@ public class UnBoxing {
 	public static void main(String[] args) {
 		int i=10;
 		Integer myInteger=new Integer(i);
-		System.out.println(myInteger.intValue());
+		System.out.println(myInteger.intValue());//UnBoxing
 		printValue(myInteger);
 
 	}
