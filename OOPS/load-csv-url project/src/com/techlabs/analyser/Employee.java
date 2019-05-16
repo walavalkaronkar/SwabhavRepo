@@ -60,5 +60,38 @@ public class Employee {
 	public int getDepartmentNumber() {
 		return departmentNumber;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((empDesignation == null) ? 0 : empDesignation.hashCode());
+		result = prime * result + employeeId;
+		result = prime * result + ((employeeName == null) ? 0 : employeeName.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Employee other = (Employee) obj;
+		if (empDesignation == null) {
+			if (other.empDesignation != null)
+				return false;
+		} else if (!empDesignation.equals(other.empDesignation))
+			return false;
+		if (employeeId != other.employeeId)
+			return false;
+		if (employeeName == null) {
+			if (other.employeeName != null)
+				return false;
+		} else if (!employeeName.equals(other.employeeName))
+			return false;
+		return true;
+	}
+	
 	
 }
