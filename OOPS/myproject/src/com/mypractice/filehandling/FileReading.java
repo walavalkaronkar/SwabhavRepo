@@ -17,7 +17,7 @@ public class FileReading {
 		try
 		{
 			//boolean createfile=file.createNewFile();
-			//System.out.println(file.getAbsolutePath());
+			System.out.println(file.getAbsolutePath());
 			//System.out.println("File created"+createfile);
 		}
 		catch(Exception e)
