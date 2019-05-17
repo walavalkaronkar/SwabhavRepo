@@ -1,6 +1,7 @@
 package com.techlabs.analyser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.techlabs.loader.DiskFileLoader;
@@ -13,10 +14,11 @@ public class DataAnalyzerTest {
 		HashSet<Employee> employee=new HashSet<Employee>();
 		DiskFileLoader dfl=new DiskFileLoader();
 		URLFileLoader urlf=new URLFileLoader();
-		employee=urlf.loadEmployee();
+		EmployeeFetchHelper efh=new EmployeeFetchHelper();
+		employee=dfl.loadEmployee();
 
 		DataAnalyzer da=new DataAnalyzer();
-		System.out.println("Total number of employees"+da.getEmployeeCount(employee));
+		System.out.println("Total number of employees "+da.getEmployeeCount(employee));
 		
 		Employee emp;
 		emp=da.getMaximumSalariedEmployee(employee);
@@ -26,14 +28,17 @@ public class DataAnalyzerTest {
 		System.out.println("Total number of employees in dept "+da.getTotalEmployeeByDepartment(employee, 20));
 		System.out.println("Total number of Employee with Designation manager is "+da.getTotalEmployeeByDesignation(employee, "MANAGER"));
 		
-		HashSet<Employee> employee1= da.getEmployeeByDepartment(employee, 30);
-		
 		
 		System.out.println();
-		System.out.println("Employees with deptartment number 30");
-		for(Employee e:employee1)
+		ArrayList<Integer> dNumberList=efh.getAllDepartmentNumbers(employee);
+		for(int departmentNumber:dNumberList)
 		{
-			System.out.println(e.getEmployeeId()+" "+e.getEmployeeName()+" "+e.getEmpDesignation()+" "+e.getManagerId()+" "+e.getSalary());
+			HashSet<Employee> employee1= da.getEmployeeByDepartment(employee,departmentNumber);
+			System.out.println("Employees with department number"+departmentNumber);
+			for(Employee e:employee1)
+			{
+				System.out.println(e.getEmployeeId()+" "+e.getEmployeeName()+" "+e.getEmpDesignation()+" "+e.getManagerId()+" "+e.getSalary());
+			}
 		}
 		
 	}
