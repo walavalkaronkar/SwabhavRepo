@@ -3,6 +3,7 @@ package com.techlabs.analyser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 
 import com.techlabs.loader.DiskFileLoader;
 import com.techlabs.loader.URLFileLoader;
@@ -30,7 +31,16 @@ public class DataAnalyzerTest {
 		
 		
 		System.out.println();
-		ArrayList<Integer> dNumberList=efh.getAllDepartmentNumbers(employee);
+		
+		Map<Integer,Integer> departmentCount=da.getEmployeeDepartmentWiseCount(employee);
+		
+		departmentCount.entrySet();
+		
+		for(Map.Entry m:departmentCount.entrySet()){    
+		       System.out.println("Department Number "+m.getKey()+" Number of Employees "+m.getValue());    
+		      }  
+		
+		/*ArrayList<Integer> dNumberList=efh.getAllDepartmentNumbers(employee);
 		for(int departmentNumber:dNumberList)
 		{
 			HashSet<Employee> employee1= da.getEmployeeByDepartment(employee,departmentNumber);
@@ -39,7 +49,7 @@ public class DataAnalyzerTest {
 			{
 				System.out.println(e.getEmployeeId()+" "+e.getEmployeeName()+" "+e.getEmpDesignation()+" "+e.getManagerId()+" "+e.getSalary());
 			}
-		}
+		}*/
 		
 	}
 

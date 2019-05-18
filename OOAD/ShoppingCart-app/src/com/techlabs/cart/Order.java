@@ -30,9 +30,29 @@ public class Order {
 		return items;
 	}
 	
-	public void addItem(LineItem listItem)
+	public void addItem(LineItem lineItem)
 	{
-		items.add(listItem);
+		String productId=lineItem.getProduct().getId();
+		if(items.size()==0)
+		{
+			items.add(lineItem);
+		}
+		else
+		{
+			for(LineItem item:items)
+			{
+				if(productId.equals(item.getProduct().getId()))
+				{
+					int quantity=item.getQuantity()+lineItem.getQuantity();
+					item.setQuantity(quantity);
+				}
+				else
+				{
+					items.add(lineItem);
+				}	
+			}
+		}
+		
 	}
 	
 	public double totalCostOfOrder(List<LineItem> items)

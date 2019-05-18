@@ -20,6 +20,6 @@ public class EmployeeLoader {
 		employee.setDepartmentNumber(Integer.parseInt(details[7]));
 		
 		emp.add(employee);
-		return emp;
+		return emp; 
 	}
 }

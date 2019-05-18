@@ -19,18 +19,23 @@ public class ShoppingCartTest {
 		LineItem lineItem4=new LineItem(2, product4);
 		LineItem lineItem5=new LineItem(4, product5);
 		
+		LineItem lineItem6=new LineItem(4, product1);
 		
 		Order order1=new Order();
 		order1.addItem(lineItem1);
-		order1.addItem(lineItem2);
+		order1.addItem(lineItem6);
+		//order1.addItem(lineItem2);
+		
+		/*
 		Order order2=new Order();
 		order2.addItem(lineItem3);
 		order2.addItem(lineItem4);
 		order2.addItem(lineItem5);
 		
-		customer1.addOrder(order1);
-		customer1.addOrder(order2);
 		
+		customer1.addOrder(order2);
+		*/
+		customer1.addOrder(order1);
 		
 		System.out.println("Customer Id :"+customer1.getId());
 		List<Order>order=customer1.getOrder();

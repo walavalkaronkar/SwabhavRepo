@@ -1,6 +1,8 @@
 package com.techlabs.analyser;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class DataAnalyzer {
 
@@ -61,5 +63,26 @@ public class DataAnalyzer {
 		}
 		
 		return emp;
+		
+	}	
+	public Map<Integer,Integer> getEmployeeDepartmentWiseCount(HashSet<Employee> employee)
+	{
+		Map<Integer,Integer> departmentCount=new HashMap<Integer,Integer>();
+		for(Employee e:employee)
+		{
+			if(departmentCount.containsKey(e.getDepartmentNumber()))
+			{
+				int count=departmentCount.get(e.getDepartmentNumber());
+				count++;
+				departmentCount.put(e.getDepartmentNumber(), count);
+			}
+			else
+			{
+				departmentCount.put(e.getDepartmentNumber(), 1);
+			}
+			//if(e.getDepartmentNumber())
+		}
+		return departmentCount;
 	}
+	
 }
