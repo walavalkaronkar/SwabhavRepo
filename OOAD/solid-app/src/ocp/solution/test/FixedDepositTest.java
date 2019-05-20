@@ -1,16 +1,19 @@
 package ocp.solution.test;
 
-import ocp.solution.test.Festival;
 
 public class FixedDepositTest {
 
 	public static void main(String[] args) {
 		
 		FixedDeposit fd;
-		fd=new FixedDeposit(1,"Onkar",1000,10f,Festival.NORMAL);
-		CalculateRate cr=new CalculateRate();
-		float roi=cr.caluclateRateOfInterest(fd);
-		System.out.println(fd.calculateTotalAmount(roi));
+		
+		fd=new FixedDeposit(1,"Onkar",1000,10f,new DiwaliRate());
+		System.out.println(fd.calculateTotalAmount());
+		fd=new FixedDeposit(1,"Onkar",1000,10f,new HoliRate());
+		System.out.println(fd.calculateTotalAmount());
+		fd=new FixedDeposit(1,"Onkar",1000,10f,new NormalRate());
+		System.out.println(fd.calculateTotalAmount());
+		
 
 	}
 
