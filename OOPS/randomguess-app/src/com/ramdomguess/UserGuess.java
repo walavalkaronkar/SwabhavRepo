@@ -9,7 +9,7 @@ public class UserGuess {
 	 {
 		 System.out.println("Enter your guess");
 		 Scanner scn=new Scanner(System.in);
-		 userGuessGumber=scn.nextInt();
+		 userGuessGumber=scn.nextInt();	
 		 return userGuessGumber;
 	 }
 }

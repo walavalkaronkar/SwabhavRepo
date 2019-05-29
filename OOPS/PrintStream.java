@@ -995,7 +995,7 @@ public class PrintStream extends FilterOutputStream
      *         string.  If there are more arguments than format specifiers, the
      *         extra arguments are ignored.  The number of arguments is
      *         variable and may be zero.  The maximum number of arguments is
-     *         limited by the maximum dimension of a Java array as defined by
+     *         limited by the maximum dimension of a Java array 1111111111111111111111111111111111111111111111111111111111111111111as defined by
      *         <cite>The Java&trade; Virtual Machine Specification</cite>.
      *         The behaviour on a
      *         <tt>null</tt> argument depends on the <a
