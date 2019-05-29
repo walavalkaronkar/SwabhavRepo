@@ -30,5 +30,83 @@ Create repo on github
 
  12
 
-13
-14
+    1  git config --list
+    2  git config --global user.name "walavalkaronkar"
+    3  git config --global user.email "walavalkaronkar@gmail.com"
+    4  git config --list
+    5  git init
+    6  notepad Hello.txt
+    7  gitlog
+    8  git log
+    9  git status
+   10  git add .
+   11  git status
+   12  git commit -m 'First Commit'
+   13  git log
+   14  git status
+   15  notepad Hello.txt
+   16  git status
+   17  git add .
+   18  git status
+   19  git commit -m 'Second change'
+   20  git log
+   21  git status
+   22  notepad Hello.txt
+   23  git status
+   24  git add .
+   25  git status
+   26  git commit -m 'Third change'
+   27  git log
+   28  checkout d614c
+   29  chckout d614c
+   30  git checkout d614c
+   31  git checkout 5f203
+   32  git checkout master
+   33  git remote -v
+   34  git remote add swabhav https://github.com/walavalkaronkar/SwabhavRepo.git
+   35  git remote -v
+   36  git push swabhav master
+   37  git status
+   38  notepad Commands.txt
+   39  git status
+   40  git add .
+   41  git status
+   42  git commit -m 'Command Commit'
+   43  git status
+   44  git push swabhav master
+   45  notepad .gitignore
+   46  notepad Commands.txt
+   47  git status
+   48  git add .
+   49  git commit -m 'added gitignore'
+   50  notepad Commands.txt
+   51  git status
+   52  git add .
+   53  git status
+   54  git commit -m 'commmit command1'
+   55  logs
+   56  git log
+   57  s
+   58  ls
+   59  git status
+   60  git add .
+   61  git status
+   62  git commit -m ''ignore pdf
+   63  git commit -m ''ignore pdf'
+   64  git commit -m 'ignore pdf'
+   65  git loggitgit
+   66  git add .git
+   67  git status
+   68  git push swabhav
+   69  git push swabhav master
+   70  git status
+   71  git add .gitignore
+   72  git status
+   73  git commit -m 'update gitignore'
+   74  git push swabhav master
+   75  git status
+   76  git push swabhav master
+   77  git add .
+   78  git status
+   79  git commit -m 'java day1'
+   80  git push swabhav master
