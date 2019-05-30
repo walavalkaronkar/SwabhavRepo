@@ -19,11 +19,16 @@ public class CompositeTest {
 		english.addItems(new File("SpiderMan","1450"));
 		english.addItems(new File("HarryPotter","1200"));
 		
+		Folder action =new Folder("action");
+		
+		
 		int level=root.getLevel();
 		english.setLevel(level+1);
 		hindi.setLevel(level+1);
+		action.setLevel(level+1);
 		root.addItems(english);
 		root.addItems(hindi);
+		english.addItems(action);
 		
 		
 		
