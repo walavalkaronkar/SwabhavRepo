@@ -60,6 +60,13 @@ public class Employee {
 	public int getDepartmentNumber() {
 		return departmentNumber;
 	}
+	
+	@Override
+	public String toString() {
+		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", empDesignation="
+				+ empDesignation + ", managerId=" + managerId + ", dateOfJoining=" + dateOfJoining + ", salary="
+				+ salary + ", commision=" + commision + ", departmentNumber=" + departmentNumber + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

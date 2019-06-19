@@ -45,7 +45,12 @@ public class ListItem implements Comparable {
 		return list.id-id;
 	}
 
-	/*
+	@Override
+	public String toString() {
+		return "ListItem [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
+	}
+
+	
 	@Override
 	public int hashCode() {
 		return id;
@@ -59,5 +64,5 @@ public class ListItem implements Comparable {
 		return true;
 	}
 	
-	*/
+	
 }

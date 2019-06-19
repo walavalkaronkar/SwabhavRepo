@@ -14,11 +14,17 @@ public class DataAnalyzerTest {
 		
 		HashSet<Employee> employee=new HashSet<Employee>();
 		DiskFileLoader dfl=new DiskFileLoader();
-		URLFileLoader urlf=new URLFileLoader();
-		EmployeeFetchHelper efh=new EmployeeFetchHelper();
+		//URLFileLoader urlf=new URLFileLoader();
+		//EmployeeFetchHelper efh=new EmployeeFetchHelper();
 		employee=dfl.loadEmployee();
 
+		for(Employee employee1: employee)
+		{
+			System.out.println(employee1);
+		}
+		System.out.println(employee.size());
 		DataAnalyzer da=new DataAnalyzer();
+		/*
 		System.out.println("Total number of employees "+da.getEmployeeCount(employee));
 		
 		Employee emp;
@@ -39,6 +45,7 @@ public class DataAnalyzerTest {
 		for(Map.Entry m:departmentCount.entrySet()){    
 		       System.out.println("Department Number "+m.getKey()+" Number of Employees "+m.getValue());    
 		      }  
+		      */
 		
 		/*ArrayList<Integer> dNumberList=efh.getAllDepartmentNumbers(employee);
 		for(int departmentNumber:dNumberList)

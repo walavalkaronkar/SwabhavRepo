@@ -16,7 +16,7 @@ public class GenericCollectionTest {
 		
 		for(ListItem item:items)
 		{
-			System.out.println(item.totalPrice());
+			System.out.println(item);
 		}
 	}
 
