@@ -1,0 +1,24 @@
+
+<script>
+                    var primes =[];
+                    var value=2;
+                    while(value<=100)
+                    {
+                        let flag=true;
+                       
+                        for(let temp=2;temp<=value/2;temp++)
+                        {
+                            if(value%temp ==0)
+                            {
+                                flag=false;
+                                break; 
+                            }
+                        }
+                        if(flag)
+                        {
+                            primes.push(value);
+                        }
+                        value++;
+                    }
+                    console.log(primes);
+</script>

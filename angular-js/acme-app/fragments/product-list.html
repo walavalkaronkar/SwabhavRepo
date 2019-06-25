@@ -1,0 +1,36 @@
+<div class="container" id="table-list">
+    <div class="welcome-box" >
+        <div class="welcome-box-inner">
+            <p style="color: white;font-size:32px;font-weight: 300;margin-left: 20px;">Products list</p>
+        </div>
+        <div>
+            <br>
+            Filter By<input type="text" ng-model="searchProduct">
+            <table class="table table-hover">
+                <thead class="row">
+                    <th><button class="btn btn-primary" ng-click="buttontoogle()">{{buttondata}}</button></th>
+                    <th>Product</th>
+                    <th>Code</th>
+                    <th>Avalibale</th>
+                    <th>Price</th>
+                    <th>5 star rating</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="p in products | filter:searchProduct">
+                        <td><img src="{{p.imageUrl}}" ng-show="showbutton" width="60px" height="60px"></td>
+                        <td><a href="#!/productDetails/{{$index}}"> {{p.productName}}</a></td>
+                        <td>{{p.productCode}}</td>
+                        <td>{{p.releaseDate}}</td>
+                        <td>{{p.price}}</td>
+                        <td>
+                            <star ng-bind-html=" p.starRating | Starfilter "></star>
+                            {{p.starRating}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<star></star>

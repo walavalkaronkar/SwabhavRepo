@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="angular.js"></script>
+    <script src="event.min.js"></script>
+    
+</head>
+<body ng-app="myApp">
+    <div ng-controller="myCtrl">
+           <button ng-click="myFunc()">click</button> 
+           <button type="checkbox" ng-model="myVar" ng-click="toggle()">q</button>
+
+           <div ng-show="istrue">
+               <h1>hide</h1>
+            </div>
+            <div ng-controller="myCtrl">
+                <div ng-repeat=" x in student" id="{{x.id}}" ng-Style="{{x.cgpa | Demofilter}}" >
+                   
+                    <p>{{x.name}}</p>
+                    <p><img ng-src={{x.image}} width="50px" height="50px"></img></p>
+                    <p>{{x.cgpa}}</p>
+                </div>
+                
+            </div>
+            </div>
+<script>
+            
+</script>
+</body>
+</html>

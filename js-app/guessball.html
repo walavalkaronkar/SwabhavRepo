@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <style>
+        .button {
+            background-color: gray;
+            width: 120;
+            height: 120;
+            border-radius: 50%;
+            padding: 20px;
+            margin: 14px 2px;
+        }
+
+        #startbutton {
+            width: 100px;
+            height: 40px;
+            background-color: blueviolet;
+            font-size: 20px;
+            color: darkgoldenrod;
+        }
+
+        #start {
+            width: 100%;
+            height: 200px;
+            background-color: aqua;
+            font-size: 18px;
+            font-weight: 200;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            
+
+
+        }
+
+        #countdown {
+            display: none
+        }
+
+        #box {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+    <div id="start">
+        Rules for the game:<br>
+        1.You have only 5 chance to guess correct ball.<br>
+        2.if you chose ball which is less than correct ball then ball will turn red.<br>
+        3.if you chose ball which is less than correct ball then ball will turn green.<br>
+        4.if you choose perfect ball the ball will turn blue.<br>
+        5.if yor cannot find ball in 5 turns or within 15 secounds correct ball will be turn blue.<br>
+        <button id="startbutton" value="start">start</button>
+    </div>
+
+    <div id="countdown"></div>
+    <div class="box" id="box">
+
+    </div>
+
+    <script>
+        (function () {
+
+            var max=5;
+            var intrandom;
+            var start=document.querySelector("#startbutton").addEventListener('click',startgame);
+
+            function startgame()
+            {
+                alert("clicked");
+                document.getElementById("start").style.display="none";
+                document.getElementById("countdown").style.display="block";
+                document.getElementById("box").style.display="block";
+                createRandom();
+                createButtons();
+                timer();
+            }
+
+
+
+            function createRandom() {
+                var random = Math.random() * 100;
+                var max = 5;
+                while (random >= 50 || random == 0) {
+                    random = Math.random() * 100;
+                }
+                intrandom = parseInt(random);
+                alert(intrandom);
+            }
+
+            function createButtons() {
+                for (i = 1; i <= 50; i++) {
+                    var button = document.createElement("button");
+                    button.innerHTML = i;
+                    button.className = "button";
+                    button.id = i;
+
+                    var buttonDiv = document.getElementById("box");
+                    //button.onclick = "check";
+                    buttonDiv.appendChild(button);
+                }
+                createOnClickEventOnButton();
+
+            }
+            function createOnClickEventOnButton()
+            {
+                for (i = 1; i <= 50; i++) {
+                    document.getElementById(i).onclick = check;
+                }
+            }
+
+            function timer() {
+                var timeleft = 10;
+                var downloadTimer = setInterval(function () {
+                    document.getElementById("countdown").innerHTML = timeleft + " seconds remaining";
+                    timeleft -= 1;
+                    if (timeleft <= 0) {
+                        clearInterval(downloadTimer);
+                        max = 0;
+                        document.getElementById(intrandom).style.backgroundColor = "blue";
+                        document.getElementById("countdown").innerHTML = "Finished"
+                    }
+                }, 1000);
+            }
+
+
+
+            function check() 
+            {
+                if (max > 0) {
+                    decsion(this.id);
+                    return;
+                }
+                document.getElementById(intrandom).style.backgroundColor = "blue";
+            }
+
+
+            function decsion(value)
+            {
+                max = max - 1;
+                if (intrandom > value) {
+                    document.getElementById(value).style.backgroundColor = "red";
+                    return;
+                }
+                else if (intrandom < value) {
+                    document.getElementById(value).style.backgroundColor = "green";
+                    return;
+                }
+                document.getElementById(value).style.backgroundColor = "blue";
+                max=0;
+            }
+        })();
+    </script>
+</body>
+
+</html>

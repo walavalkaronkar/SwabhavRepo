@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../angular.js"></script>
+    <script src="../angular-route.js"></script>
+    <script src="emp-app.js"></script>
+    <script src="employeeservice.js"></script>
+    <script src="addcontroller.js"></script>
+    <script src="homecontroller.js"></script>
+    <script src="editcontroller.js"></script>
+    <script src="logincontroller.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body ng-app="empApp">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" ng-controller="LoginController">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#!/">Home</a></li>
+                <li ng-hide="display"><a href="#!/add">Add</a></li>
+                <li ng-show="display"> <a href="#!/login">Login</a></li>
+                <li ng-hide="display" ng-click="logout()"><a ng-click="logout()">Logout</a></li>
+
+                <li ng-hide="display"><a>Logged in as {{user}}</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div ng-view>
+
+    </div>
+</body>
+
+</html>

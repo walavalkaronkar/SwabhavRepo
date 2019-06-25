@@ -1,0 +1,28 @@
+<html>
+    <script>
+        function cubeEven(number)
+        {
+            return new Promise(function(resolve,reject)
+            {
+                if(number%2)
+                {
+                    resolve(number*number*number);
+                }
+                else
+                {
+                    reject({message:"not even number"});
+                }
+            })
+        }
+
+        cubeEven(2)
+        .then(function(r)
+        {
+            console.log(r);
+        });
+        .catch(function(e)
+        {
+            console.log(e);
+        });
+    </script>
+</html>

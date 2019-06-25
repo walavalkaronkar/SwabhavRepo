@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <script src="../bootstrap-app/js/bootstrap.js"></script>
+    <link href="../bootstrap-app/css/bootstrap.css" rel="stylesheet" ></link>
+    <script src="dataservice.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(()=>
+        {
+            var hashid;
+            let student=[];
+            sendstudent={}
+
+            function fetchUrl()
+            {
+                fetchFromUrl().then((r)=>
+                {
+                    student=r;
+                    $("#total").text(student.length);
+                    $.displayTables();
+
+                });
+            }
+
+            fetchUrl();
+
+            $("#submitbutton").click(function(){
+                let ismale;
+                if(document.getElementById("male").checked)
+                {
+                    ismale=true;
+                }
+                else{
+                    ismale=false;
+                }
+                let studentdata ={
+                            "rollNo":$("#rollno").val(),
+                            "name":$("#name").val(),
+                            "age":parseInt($("#age").val()),
+                            "email":$("#email").val(),
+                            "date":$("#date").val(),
+                            "isMale":ismale
+                        }
+                console.log(studentdata);
+                $.validate();
+                /*
+                sendToUrl(studentdata).then((r)=>
+                {
+                })
+                fetchUrl();
+                */
+            });
+
+                
+            $("#updatebutton").click(function(){
+                let ismale;
+                if(document.getElementById("male").checked)
+                {
+                    ismale=true;
+                }
+                else{
+                    ismale=false;
+                }
+                let studentdata ={
+                    "rollNo":$("#rollno").val(),
+                    "name":$("#name").val(),
+                    "age":parseInt($("#age").val()),
+                    "email":$("#email").val(),
+                    "date":$("#date").val(),
+                    "isMale":ismale
+                }
+                //console.log(studentdata);
+                //alert(hashid);
+                updateData(hashid,studentdata).then((r)=>
+                {
+                    fetchUrl();
+                })
+                
+            });
+            
+            
+            $.displayTables=()=>
+            {
+                console.log(student);
+                        let display=document.getElementById("display-list");
+                        let stringDisplay="<tr><th>ID </th><th> name</th><th>Roll No </th><th> Email </th><th> Ages </th><th> Date </th><th> Gender </th><th> Action </th></tr>";
+
+                    for(let value=student.length-1;value>=0;value--)
+                    {
+                        stringDisplay+="<tr id='"+student[value].id+"'>";
+                        stringDisplay+="<td>"+student[value].id+" </td>";
+                        stringDisplay+="<td>"+student[value].name+" </td>";
+                        stringDisplay+="<td>"+student[value].rollNo+" </td>";
+                        stringDisplay+="<td>"+student[value].email+" </td>";
+                        stringDisplay+="<td>"+student[value].age+" </td>";
+                        stringDisplay+="<td>"+student[value].date+" </td>";
+                        if(student[value].isMale==true)
+                        {
+                            stringDisplay+="<td>Male</td>";
+                        }
+                        else
+                        {
+                            stringDisplay+="<td>Female</td>";
+                        }
+                        stringDisplay+="<td><button class='delete' id="+value+"><span class='glyphicon glyphicon-trash'></span></button><button class='edit' id="+value+"><span class='glyphicon glyphicon-edit'></span></button></td>";
+                        stringDisplay+="</tr>";
+
+                    }
+                    display.innerHTML=stringDisplay;
+                    $("#rollno").val("");
+                    $("#age").val("");
+                    $("#email").val("");
+                    $("#date").val("");
+                    $("#name").val("");
+                    $( "#male" ).prop( "checked", false );
+                    $( "#female" ).prop( "checked", false);
+
+
+                    $(".edit").click(function(){
+                        hashid=$(this).parent().parent().attr('id');
+                        //alert($(this).parent().parent().attr('id'));
+                        let value=$(this).attr('id');
+                        $("#rollno").val(student[value].rollNo);
+                        $("#age").val(student[value].age);
+                        $("#email").val(student[value].email);
+                        $("#date").val(student[value].date);
+                        $("#name").val(student[value].name);
+                        if(student[value].isMale)
+                        {
+                            $( "#male" ).prop( "checked", true );
+                        }
+                        else{
+                            $( "#female" ).prop( "checked", true );
+                        }
+                        
+
+                    });
+
+                    $(".delete").click(function(){
+                        id=$(this).parent().parent().attr('id')
+                        var txt;
+                            if (confirm("Do you want to delete")) 
+                            {
+                                deleteFromUrl(id).then((r)=>
+                                {
+                            
+                                    fetchUrl();
+                                     console.log("helllo");
+                                });
+                            }
+                       
+                    });  
+            }
+
+            $.validate=()=>
+            {
+                console.log("inside validate");
+                console.log($("#rollno").val())
+                if( $("#rollno").val() =="")
+                {
+                    console.log("insdie");
+                    $("#rollno").css("border-color","red");
+                    $("#rollno").css("border","2px");
+                    $("#rollno").addClass('errorClass');
+                }
+            }
+
+            
+        
+        });
+    
+    </script>
+</head>
+<body>
+    <div id="container">
+            Student count <label id="total" class="label label-info"></label>
+
+            <form class="form-inline" method="POST">
+                    <div class="form-group">
+                        <label>Roll no</label>
+                        <input type="text" class="form-control" id="rollno">
+                    </div>
+                    <div class="form-group">
+                            <label>Name</label>
+                            <input type="text"  class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                           <label>Age</label>
+                            <input type="number" class="form-control" id="age">
+                    </div>
+                    <div class="form-group">
+                            <label>Email</label>
+                             <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group radio" >
+                                <label>Gender</label>
+                                male
+                                <input type="radio" name="gender" id="male" value="male">
+                                female
+                                <input type="radio" name="gender" id="female" value="female">
+
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" id="submitbutton" >Submit</button> 
+                        <button type="button" class="btn btn-default" id="updatebutton" >Update</button> 
+
+                    </div>
+                    
+            </form>
+
+            <div>
+                <table  class="table table-dark table-bordered">
+                    <tbody id="display-list">
+
+                    </tbody>
+
+                </table>
+            </div>
+    </div>
+</body>
+</html>

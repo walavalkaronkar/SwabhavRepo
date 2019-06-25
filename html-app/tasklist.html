@@ -1,0 +1,122 @@
+<html>
+    <style>
+    h3{
+        border-style: solid;
+        border-width: 1px;
+        width:200px;
+    }
+    </style>
+    
+    <body>
+        <div>
+            <p> Task</p>
+            <input type="textbox" name="task" id="task">
+            <button onclick="addToList()">add To List</button>
+        </div>
+        <div id="tasklist">
+
+        </div>
+
+        <script>
+                var parselist=localStorage.getItem("mytasklists");
+                if(parselist)
+                    var tasklist=JSON.parse(parselist);
+                var e="";
+                for (var y=0; y<tasklist.length; y++)
+                {
+                    e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button> ";
+                    e+="<input type='checkbox' onclick='checkmark("+y+")'> <br/>";
+                }
+                document.getElementById("tasklist").innerHTML = e;
+            
+
+            function addToList()
+            {
+                var task=document.getElementById("task").value;
+                //var para=document.createElement('h3');
+                //var node=document.createTextNode(task);
+                //para.append(node);
+                //var tasklist=document.getElementById("tasklist");
+                //tasklist.appendChild(para);
+
+                //tasklist.push(task)
+
+                //var mytasklist=["task"];
+                //localStorage.setItem("mytasklists",JSON.stringify(mytasklist));
+                
+                var parselist=localStorage.getItem("mytasklists");
+                if(parselist)
+                    var tasklist=JSON.parse(parselist);
+                
+                tasklist.push(task)
+                if(task)
+                    localStorage.setItem("mytasklists",JSON.stringify(tasklist));
+                var e="";
+                for (var y=0; y<tasklist.length; y++)
+                {
+                    e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                }
+                console.log(e); 
+                document.getElementById("tasklist").innerHTML = e;
+                
+            }
+
+            function deleteelement(index)
+            {
+                //var parselist=localStorage.getItem("mytasklists");
+                //if(parselist)
+                    //var tasklist=JSON.parse(parselist);
+                var number=Number(index);
+                var e=""
+                tasklist.splice(number,1);
+                for (var y=0; y<tasklist.length; y++)
+                {
+                    e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                    e+="<input type='checkbox' onclick='checkmark("+y+")'> <br/>";
+                   
+                }
+                console.log(e); 
+                document.getElementById("tasklist").innerHTML = e;
+                
+            }
+
+            function checkmark(index)
+            {
+                var number=Number(index);
+                e="";
+                for (var y=0; y<tasklist.length; y++)
+                {
+                    if(y==number)
+                    {
+                        e += "<h3> <strike>" +tasklist[y]+ " </strike></h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                        e+="<input type='checkbox' onclick='uncheckmark("+y+")'> <br/>";
+                    }
+                    else{
+                        e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                        e+="<input type='checkbox' onclick='checkmark("+y+")'> <br/>";
+                    }
+                    document.getElementById("tasklist").innerHTML = e;
+                }
+            }
+
+            function uncheckmark(index)
+            {
+                e="";
+                var number=Number(index);
+                for (var y=0; y<tasklist.length; y++)
+                {
+                    if(y==number)
+                    {
+                        e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                        e+="<input type='checkbox' onclick='checkmark("+y+")'> <br/>";
+                    }
+                    else{
+                        e += "<h3> " +tasklist[y]+ " </h3> "+"<button id='button"+y+"' onclick='deleteelement("+y+")'> X</button>";
+                        e+="<input type='checkbox' onclick='checkmark("+y+")'> <br/>";
+                    }
+                    document.getElementById("tasklist").innerHTML = e;
+                }
+            }
+        </script>
+    </body>
+</html>

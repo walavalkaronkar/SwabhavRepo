@@ -1,0 +1,67 @@
+<html>
+    <body>
+        <script>
+            
+            function Customer(id,name,lname)
+            {
+                this.id=id;
+                this.lname=lname;
+                this.name=name;
+                this.getdata=function()
+                {
+                    return this.id+" "+this.name+" "+this.lname;
+                }
+            }
+
+            function Student()
+            {
+                var _rollno,_name;
+                console.log(this);
+                this.setRollno=function(rollno)
+                {
+                    if(rollno>0)
+                    {
+                        _rollno=rollno;
+                    }
+                }
+                this.getName=function()
+                {
+                    return _rollno;
+                }
+
+                this.setName=function(name)
+                {
+                    if(name.length>1)
+                    {
+                        _name=name;
+                    }
+                }
+                this.getName=function()
+                {
+                    return _name;
+                }
+
+            }
+
+            /*var c1= new Customer(101,"abc","pqr");
+            c1.getdata();
+            console.log(c1);
+
+            var c2= new Customer(102,"def","lmn");
+            c2.getdata();
+            console.log(c1);*/
+
+            var s1= new Student();
+            s1.setRollno(101);
+            s1.setName("sameer");
+            console.log(s1);
+
+            /*var s2=new Student();
+            s2.setRollno(102);
+            s2.setName("rahul");
+            console.log(s2);*/
+
+
+        </script>
+    </body>
+</html>

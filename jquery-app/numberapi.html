@@ -1,0 +1,149 @@
+<html>
+    <head>
+        <script src="jquery-3.4.1.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+            
+            
+
+            $(document).ready(()=>{
+                let messages=[];
+                $.displayAllMes=()=>{
+                    console.log("call received");
+                    //document.getElementById("#display-list").innerHTML="";
+                    $("#display-list").html("<table>"); 
+                    for(let value=messages.length-1;value>=0;value--)
+                    {
+                        //$("#display-list").append("<tr id='"+value+"'><td>"+messages[value]+" <button class='delete' id='b"+value+"'>X</button></td></tr>"); 
+                        $("#display-list").append("<tr id='"+value+"'><td>"+messages[value]+" </td></tr>");
+                    }
+                    $("#display-list").append("</table>");
+                    $( ".delete" ).click(function() {
+                    //alert(document.getElementById(this.id));
+                    //alert(this.id);
+                    var index= $(this).parent().parent().attr('id');
+                    alert(index);
+                    messages.splice(index,1);
+                    $.displayAllMes();
+                    //$( this.id ).parent().parent();
+                });
+                
+                }
+                
+                if(localStorage.getItem("numberMessages")==null)
+                {
+                    localStorage.setItem("numberMessages",JSON.stringify(messages));
+                }
+                else
+                {
+                    messages=JSON.parse(localStorage.getItem("numberMessages"));
+                    
+                    console.log("call displayAllMes");
+                    $.displayAllMes();
+                }
+
+               
+
+                $("#sendNumber").click(()=>{
+
+                    let number=$("#inputNumber").val();
+                    $("#display-content").html("<div class='spinner-border text-primary'></div>");
+
+                    setTimeout(function(){
+                        $.ajax({
+                        async: true,
+                        type: "GET",
+                        url: "http://numbersapi.com/"+Number(number),
+                        success: function (response) {  
+                            $("#display-content").text(response);    
+                        }
+                    });
+
+                    },2000);
+
+                    //$.callurl(number)
+                    //.then(function(r){
+                    //   $("#display-content").text(r);
+                     //   console.log("feteched content"+stringvalue);
+                        //messages[messages.length]=r;
+                        //console.log("print data from messages"+messages);
+                        //localStorage.setItem("numberMessages",JSON.stringify(messages));
+                        //$.displayAllMes();
+                        
+                    //})
+                    //.catch(function(r){
+                    //    $("#display-content").text(r);
+                    //})
+                });
+
+                
+
+                $.myFunction = ()=>{ 
+                     alert('You have successfully defined the function!'); 
+                }
+
+                $.callurl=(num)=>{
+                    return new Promise(function (resolve,reject)
+                    {
+                        if(num>=0)
+                        {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() 
+                            {
+                            if (this.readyState == 4 && this.status == 200) 
+                            {  
+                                stringvalue=this.responseText;
+                                
+                                resolve(stringvalue);
+                            }
+                            };
+                            xhttp.open("GET", "http://numbersapi.com/"+num, true);
+                            xhttp.send();
+                    
+                        }
+                        else
+                        {
+                            reject("error");
+                        }
+                    })
+                }
+            })
+        </script>
+
+    </head>
+    <body>
+        Enter the number<input type="text" id="inputNumber">
+        <button id="sendNumber">send</button>
+        <div style="width:100%;" id="display-content">
+            
+
+        </div>
+        <br><br><br>
+        <div style="width:100%;" id="display-list">
+
+            </div>
+
+
+
+    </body>
+</html>
+
+
+$.ajax({
+    async: true,
+    type: "POST",
+    contentType:"application/json",
+    data:sendstudent,
+    url: "http://gsmktg.azurewebsites.net/api/v1/techlabs/test/students",
+    success: function (response) {  
+        //$("#display-content").text(response);    
+        //console.log(response);
+        student=response;
+        $("#total").text(student.length);
+        $.displayTables();
+
+}
+});

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="numberApi" ng-controller="numberController">
+    <input type="text" ng-model="number">
+    <button ng-click="generate()">get data</button>
+    <p>{{r}}</p>
+</body>
+
+<script>
+    angular.module("numberApi",[])
+            .factory("NumberService",['$http','$q',function ($http,$q){
+                var object={};
+
+                object.getData=function(num){
+
+                    //return $q ((resolve,reject)=>{
+                    //    $http.get("http://numbersapi.com/"+num)
+                    //    .then(function(response){
+                    //        resolve(response.data);
+                    //    });
+                    //})
+                    return $http.get("http://numbersapi.com/"+num);
+                }
+
+                return object;
+            }])
+            .controller('numberController',['$scope','NumberService',function($scope,NumberService){
+                $scope.r;
+                $scope.number;
+                $scope.generate=function(){
+                    NumberService.getData($scope.number).then((r)=>{
+                        $scope.r=r.data;
+                    });
+                }
+            }]);
+</script>
+</html>

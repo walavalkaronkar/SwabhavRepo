@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <form method="POST" action="auth.php">
+            username<input type="text" id="username" name="username">
+            <span id="usermsg"></span><br>
+            password<input type="password" id="password" name="password">
+            <span id="passmsg"></span><br>
+            <input type="submit" id="login" name="login" value="login" >
+        </form>
+
+        <script>
+        
+        (function()
+        {
+            document.querySelector("#login").addEventListener("click", validate);
+            function validate()
+            {
+                
+                
+                var name=document.querySelector("#username").value;
+                var password=document.querySelector("#password").value;
+
+                //alert(name +""+password);
+                if(name=="")
+                {
+
+                    document.getElementById("usermsg").innerHTML="required";
+                    document.getElementById("usermsg").style.color="red";
+                    document.getElementById("usermsg").style.border="1px red";
+                    event.preventDefault();
+                }
+                if(password=="")
+                {
+                    document.getElementById("passmsg").innerHTML="required";
+                    document.getElementById("passmsg").style.color="red";
+                    event.preventDefault();
+                }
+                return true;
+            }
+        })();
+        </script>
+    </body>
+</html>

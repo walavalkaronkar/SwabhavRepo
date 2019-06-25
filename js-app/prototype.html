@@ -1,0 +1,34 @@
+<html>
+    <body>
+        <script>
+            function Employee(firstname,lastname)
+            {
+                this.firstname=firstname;
+                this.lastname=lastname;
+
+            }  
+            Employee.prototype.getFullName=function()
+            {
+                return "first name"+this.firstname+"last name"+this.lastname;
+            } 
+
+            var c1= new Employee("ABC","XYZ");
+            console.log(c1.getFullName);
+
+            console.log(c1);
+
+            console.log(c1.__proto__== Employee.prototype);
+
+            var c2= new Employee("DEF","UVW");
+            console.log(c2.getFullName);
+
+            console.log(c2);
+
+            console.log(c2.__proto__== Employee.prototype);
+
+            console.log(c2.__proto__== c1.__proto__);
+
+           
+        </script>
+    </body>
+</html>

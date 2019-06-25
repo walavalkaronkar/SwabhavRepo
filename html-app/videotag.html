@@ -1,0 +1,27 @@
+<html>
+    <body>
+
+        <video id="video1" width="400px" height="400px" autoplay controls>
+            <source src="http://localhost/html-app/video.mp4" type="video/mp4">
+                browser not supported
+
+        </video>
+
+        <button onclick="play()">Play</button> 
+        <button onclick="pause()">Pause</button> 
+
+        <script>
+        var videos=document.getElementById("video1");
+        function play()
+        {
+            videos.play();
+        }
+
+        function pause()
+        {
+            videos.pause();
+        }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+    <body>
+        Enter the number<input type="text" id="textbox1"name="textbox1" value="">
+        <button id="button1">click</button>
+
+        <p id="demo"></p>
+
+    </body>
+    <script>
+        document.getElementById("button1").addEventListener("click",getData);
+       var stringvalue;
+        
+        function getData()
+        {
+            var number=Number(document.getElementById("textbox1").value);
+            callurl(number)
+            .then(function(r){
+                document.getElementById("demo").innerHTML=r;
+            })
+            .catch(function(e){
+                document.getElementById("demo").innerHTML=e;
+            })
+        }
+
+        function callurl(num)
+        {
+            return new Promise(function (resolve,reject)
+            {
+                if(num>=0)
+                {
+                    var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() 
+                    {
+                        if (this.readyState == 4 && this.status == 200) 
+                        {  
+                            stringvalue=this.responseText;
+                            resolve(stringvalue);
+                        }
+                    };
+                    xhttp.open("GET", "http://numbersapi.com/"+num, true);
+                    xhttp.send();
+                    
+                }
+                else
+                {
+                    reject("error");
+                }
+            })
+        }
+    </script>
+</html>

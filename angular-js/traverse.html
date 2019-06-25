@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <style>
+        div {
+            width: 100%;
+            height: 300px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#content">Content</a></li>
+        <li><a href="#main">Main page</a></li>
+        <li><a href="#main1">Document</a></li>
+        <li><a href="#main2">Expenses</a></li>
+    </ul>
+    <div id="content">
+        <p>
+            <h4>Content</h4>
+            When beginning to choose your solution to create a new mobile application, you are often faced with a wide
+            range of options, but are unsure of where to begin. Is building your application solely with native
+            solutions the right choice? Should your team look at only developing with web technologies? What about some
+            of the hybrid solutions out there? These are among the many questions that arise when deliberating which
+            path is best for your business.
+
+            To start the process, it’s important to remember that picking the right solution for your next application
+            (or first) depends on several factors: Your budget, the timeline, your team’s experience with the technology
+            and, finally, your target audience.
+
+            So, with that, let’s explore the three primary genres of mobile application development and discuss some of
+            the benefits and drawbacks of each of these solutions. By the end of the article, you should have a better
+            grasp of the choices and be able to find the right solution to your mobile application development goals.
+            First, let’s define what our genres are.
+        </p>
+    </div>
+    <div id="main">
+        <p>
+            <h4>Main page</h4>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+    <div id="main1">
+        <p>
+            <h4>Document</h4>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+    <div id="main2">
+
+        <p>
+            <h4>Expenses</h4>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor
+            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+
+</body>
+
+<script>
+
+  window.onhashchange=function (){
+        console.log(location.hash);
+        if(location.hash=="#main")
+        {
+            alert("Main page");
+        }
+        if(location.hash=="#main2")
+        {
+            alert("main2");
+        }
+        if(location.hash=="#main1")
+        {
+            alert("main1");
+        }
+        if(location.hash=="#content")
+        {
+            alert("Content");
+        }
+    }
+</script>
+</html>

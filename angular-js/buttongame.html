@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="angular.js"></script>
+    <style>
+        .mybutton {
+
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            padding: 20px;
+            margin: 14px 2px;
+        }
+    </style>
+</head>
+
+<body ng-app="MyGame">
+
+
+
+    <div ng-controller="createButton">
+
+        <div ng-show="display">
+                Rules for the game:<br>
+                1.You have only 5 chance to guess correct ball.<br>
+                2.if you chose ball which is less than correct ball then ball will turn red.<br>
+                3.if you chose ball which is less than correct ball then ball will turn green.<br>
+                4.if you choose perfect ball the ball will turn blue.<br>
+                5.if yor cannot find ball in 5 turns or within 15 secounds correct ball will be turn blue.<br>
+            <button ng-click="hideshow()" class="button">start</button>
+        </div>
+        <div ng-hide="display">
+            <P>Turms lefts are {{turns}}</P>
+            <p>Time Left {{countDown}}</p>
+            <button ng-repeat="button in buttons" id="{{button}}" ng-disabled="isDisable" class="mybutton"
+                style="background-color: {{buttoncolor[$index]}}" data-ng-click="decide($index)">{{button}}</button>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    angular.module("MyGame", [])
+        .controller("createButton", ['$scope', '$interval', function ($scope, $interval) {
+            $scope.buttons = [];
+            $scope.turns = 5;
+            $scope.random = Math.floor(Math.random() * 100 / 2);
+            $scope.buttoncolor = [];
+            $scope.countDown = 300;
+            $scope.display = true;
+            $scope.isDisable =false;
+
+            $scope.hideshow = function () {
+                $scope.display = false;
+                $scope.countDown = 25;
+            }
+
+            $scope.Timer = $interval(function () {
+                $scope.countDown--;
+                if ($scope.countDown <= 0) {
+                    $scope.turns = 0;
+                    $scope.buttoncolor[$scope.random] = "blue";
+                    alert("time out");
+                    $interval.cancel($scope.Timer);
+                }
+
+            }, 1000, 0);
+
+            console.log($scope.random)
+            for (let value = 1; value <= 50; value++) {
+                $scope.buttons.push(value);
+            }
+
+            for (let value = 1; value <= 50; value++) {
+                $scope.buttoncolor.push("gray");
+            }
+
+            $scope.decide = function (index) {
+
+                if ($scope.turns > 0) {
+                    $scope.turns--;
+                    if (event.target.id > $scope.random) {
+                        $scope.buttoncolor[index] = "red";
+                    }
+                    else if (event.target.id < $scope.random) {
+                        $scope.buttoncolor[index] = "green"; 
+                    }
+                    else {
+                        $scope.buttoncolor[index] = "blue";
+                        $scope.turns = 0;
+                        alert("you Win");
+                        $scope.isDisable = true;
+                    }
+                    this.isDisable = true;
+                }
+                if($scope.turns == 0)
+                {
+                    alert("turns over");
+                    $scope.buttoncolor[$scope.random-1] = "blue";
+                    $interval.cancel($scope.Timer);
+                }
+            }
+
+
+        }])
+</script>
+
+</html>

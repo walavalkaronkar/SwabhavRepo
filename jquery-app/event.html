@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <script src="jquery-3.4.1.js"></script>
+        <script >
+           
+
+
+            $(document).ready(()=>{
+                $("#textbox1" ).keyup(function() {
+                    let value=$("#textbox1").val();
+                    console.log(value);
+                    $("#displaytext").text(value.toUpperCase());
+
+                   
+                });
+
+                $("#fontsize" ).keyup(function() {
+                    let fontsize=$("#fontsize").val()+"px";
+                    console.log(fontsize);
+                    $("#displaytext").css("font-size",fontsize);
+                });
+
+                $("#forecolor").change(()=>
+                {
+                    let color=$("#forecolor").val();
+                    console.log(color);
+                    $("#displaytext").css("color",color);
+                });
+
+                $("#backcolor").change(()=>
+                {
+                    let color=$("#backcolor").val();
+                    console.log(color);
+                    $("#displaytext").css("background-color",color);
+                });
+
+                $("#fontfamily").change(()=>
+                {
+                    let font=$("#fontfamily").val();
+                    console.log(font);
+                    $("#displaytext").css("font-family",font);
+                });
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" id="textbox1">
+
+        font<input type="text" id="fontsize">
+
+        <select id="forecolor">
+        </select>
+
+        <select id="backcolor">
+        </select>
+
+        <select id="fontfamily">
+        </select>
+        <p id="displaytext"></p>
+
+    </body>
+    <script>
+     color=["red","green","yellow"];
+     font=["Arial","Times New Roman","Georgia"];
+
+     var forecolor=document.getElementById("forecolor");
+     var forcolor="";
+     forcolor+="<option value='red'>"+color[0]+"</option>"
+     forcolor+="<option value='yellow'>"+color[2]+"</option>"
+     forcolor+="<option value='green'>"+color[1]+"</option>"
+     forecolor.innerHTML=forcolor;
+
+     var backcolor=document.getElementById("backcolor");
+     var bcolor="";
+     bcolor+="<option value='red'>"+color[0]+"</option>"
+     bcolor+="<option value='yellow'>"+color[2]+"</option>"
+     bcolor+="<option value='green'>"+color[1]+"</option>"
+     backcolor.innerHTML=bcolor;
+
+     var fontfamily=document.getElementById("fontfamily");
+     var bcolor="";
+     bcolor+="<option value='Arial'>"+font[0]+"</option>"
+     bcolor+="<option value='Times New Roman'>"+font[1]+"</option>"
+     bcolor+="<option value='Georgia'>"+font[2]+"</option>"
+     fontfamily.innerHTML=bcolor;
+
+    </script>
+</html>

@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="welcome-box" style="height:350px; width:80%">
+        <div class="welcome-box-inner">
+            <p style="color: white;font-size:32px;font-weight: 300;margin-left: 20px;">Product Details :
+                {{ productname }}</p>
+        </div>
+        <div style="height:100%">
+            <div style="height:100%;width:45%;float:left;font-size:14px">
+                <div style="margin-left: 10px">
+                    <span>Name</span>
+                    <span style=" margin-left: 100px">:{{ productname }}</span>
+                </div>
+                <div style="margin-left: 10px">
+                    <span>Code</span>
+                    <span style=" margin-left: 105px">:{{ productCode }}</span>
+                </div>
+                <div style="margin-left: 10px">
+                    <span>Descripton</span>
+                    <span style=" margin-left: 71px">:{{ description }}</span>
+                </div>
+                <div style="margin-left: 10px">
+                    <span>Avaliability</span>
+                    <span style=" margin-left: 73px">:{{ avaliability }}</span>
+                </div>
+                <div style="margin-left: 10px">
+                    <span>Price</span>
+                    <span style=" margin-left: 110px">:{{ price }}</span>
+                </div>
+                <div style="margin-left: 10px">
+                    <span>5 Star Rating</span>
+                    <span style=" margin-left: 60px"><star ng-bind-html=" starRating | Starfilter "></star>{{starRating}}</span>
+                </div>
+                <div style="margin-top:35%; margin-left: 3%">
+                    <a href="#!/productList" style="color: black"><button> < back</button></a>
+                </div>
+            </div>
+            <div style=" height:100%; width: 45%; margin-left:40%;">
+                <img src="{{imageUrl}}" width="200px" height="250px" style="margin-left: 150px; margin-top: 50px;">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<star></star>

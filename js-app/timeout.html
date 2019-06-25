@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <script>
+            function after_two_sec()
+            {
+                console.log("Method invoke");
+            }
+
+            setTimeout(after_two_sec,2000);
+
+            setTimeout(function()
+            {
+                console.log("After 2 sec");
+            },3000);
+        </script>
+    </body>
+
+</html>

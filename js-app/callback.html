@@ -1,0 +1,55 @@
+<html>
+    <body>
+
+        <script>
+            function getData(callback)
+            {
+                console.log("getting data");
+                var r=Math.random(100)*10;
+                if(r>5)
+                {
+                    callback({
+                        result:"success"+r
+                    })
+                }
+                else
+                {
+                    callback({
+                        error:"Number is less than 5"
+                    })
+                }
+
+            }
+            
+            getData(function(data){
+                console.log("started")
+                console.log(data);
+                console.log("display data in view");
+
+                if(data.error)
+                {
+                    console.log("error "+data.error);
+                }
+                else{
+                    console.log("result found"+ data.result);
+                }
+            });
+            /*
+            getData(handleResponseData);
+            function handleResponseData(data)
+            {
+                console.log(data);
+                console.log("display data in view");
+
+                if(data.error)
+                {
+                    console.log("error "+data.error);
+                }
+                else{
+                    console.log("result found"+ data.result);
+                }
+            }
+            */
+        </script>
+    </body>
+</html>

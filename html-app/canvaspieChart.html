@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <canvas id="myCanvas" width="800" height="800" style="border:1px solid #d3d3d3;">
+            canvas not supported
+        </canvas>
+
+        <script>
+        
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+  
+            // Colors
+            var colors = ['#FF0000', '#00FF00'];
+  
+            // List of Angles
+             var angles = [Math.PI * 0.6  , Math.PI * 1.4];
+  
+            // Temporary variables, to store each arc angles
+            var beginAngle = 0;
+            var endAngle = 0;
+  
+            // Iterate through the angles
+            for(var i = 0; i < angles.length; i = i + 1) 
+            {
+                // Begin where we left off
+                beginAngle = endAngle;
+                // End Angle
+                endAngle = endAngle + angles[i];
+    
+                ctx.beginPath();
+                // Fill color
+                ctx.fillStyle = colors[i % colors.length];
+    
+                // Same code as before
+                ctx.moveTo(200, 200);
+                ctx.arc(200, 200, 120, beginAngle, endAngle);
+                ctx.lineTo(200, 200);
+                ctx.stroke();
+    
+                // Fill
+                ctx.fill();
+            }
+           
+
+        </script>
+    </body>
+</html>

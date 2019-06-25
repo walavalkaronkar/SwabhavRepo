@@ -1,0 +1,58 @@
+<html>
+
+<body>
+    <script>
+        /*
+        var swabhav= { };
+
+        swabhav.cubeEven=function(number)
+        {
+            if(number%2==0)
+            {
+                return number*number*number;
+            }
+            return 0;
+        }
+
+        swabhav.primeNumber=function(number)
+        {
+            for(var num=2;num<=number/2;num++)
+            {
+                if(number%num==0)
+                {
+                    return "Not Prime"
+                }
+            }
+            return "prime";
+        }
+        */
+
+
+        var swabhav = function () 
+        {
+            var obj = {};
+            obj.cubeEven = function (number) {
+                if (number % 2 == 0) {
+                    return number * number * number;
+                }
+                return 0;
+            }
+
+            obj.primeNumber = function (number) {
+                for (var num = 2; num <= number / 2; num++) {
+                    if (number % num == 0) {
+                        return "Not Prime"
+                    }   
+                }   
+                    return "prime";
+            }
+            return obj;
+        }();
+
+        answer = swabhav.cubeEven(4);
+        console.log(answer);
+        console.log(swabhav.primeNumber(11));
+    </script>
+</body>
+
+</html>

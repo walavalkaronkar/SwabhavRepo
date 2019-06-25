@@ -1,0 +1,51 @@
+<html>
+    <body>
+        <script>
+            var dataService=function()
+            {
+                var obj={};
+
+                obj.getData=function()
+                {
+                    var r=Math.random()*10;
+                    return r;
+                }
+                obj.getDataSync=function(callback)
+                {
+                    setTimeout(function()
+                    {
+                        var r=Math.random()*10;
+                        callback(r);
+                    },0);
+                }
+                obj.cubeNoAsync=function(no,resultCallback)
+                {
+                    setTimeout(function()
+                    {
+                        var number=no*no*no;
+                        resultCallback(number);
+                    },0);
+                }
+                return obj;
+            }();
+
+            var data=dataService.getData()
+            console.log(data);
+
+            dataService.getDataSync(function(d)
+            {
+                console.log("callback");
+                console.log(d);
+
+                dataService.cubeNoAsync(d,function(d)
+                {
+                    console.log("callback");
+                    console.log(d);
+                })
+            });
+
+        
+            console.log("End of script")
+        </script>
+    </body>
+</html>

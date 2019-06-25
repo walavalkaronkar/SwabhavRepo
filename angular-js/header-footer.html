@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Document</title>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="acme-app/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 10px;
+        width: 100%;
+        background-color: lightslategrey;
+        color: white;
+        text-align: center;
+    }
+</style>
+<script>
+    angular.module('Main', [])
+        .directive('aurionproHeader', function () {
+            var directive = {
+                //restrict: 'E',
+                template: '<header ><center><div class="header clearfix"><h3>Header Directive</h3></div><center></header>'
+            };
+            return directive;
+
+        })
+
+
+        .directive('aurionproFooter', function () {
+            var directive = {
+                template: '<footer><div class="footer"> <center>Some Footer for aurionpro </center></div></footer>',
+                //restrict: 'E'
+            };
+            return directive;
+
+        })
+
+        .directive('star', function () {
+            var directive = {
+                template: '<i class="fa fa-star" aria-hidden="true"></i>',
+                restrict: 'E'
+            };
+            return directive;
+
+        })
+
+        .controller('directiveController', ['$scope', function ($scope) {
+
+        }])
+</script>
+
+
+<body ng-app='Main'>
+    <div ng-controller="directiveController">
+        <aurionpro-header></aurionpro-header>
+        <aurionpro-footer></aurionpro-footer>
+        <star></star>
+
+    </div>
+</body>
+
+</html>

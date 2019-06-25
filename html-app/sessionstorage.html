@@ -1,0 +1,20 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <p id="para1"></p>
+
+        <script>
+                if(typeof(Storage) !== undefined){
+                    sessionStorage.college="SJCEM";
+
+                    var college=sessionStorage.getItem("college");
+                    document.getElementById("para1").innerHTML=""+college;
+                }
+                else{
+                    document.getElementById("para1").innerHTML="Browser not support";
+                }
+            </script>
+    </body>
+</html>

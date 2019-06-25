@@ -1,0 +1,117 @@
+<html>
+
+<head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <style>
+        #container {
+            width: 100%;
+            height: 20%;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #start {
+            width: 200px;
+            height: 100px;
+        }
+
+        #middle
+        {
+            width:100%;
+            height:60%;
+           
+        }
+        #question-container {
+            width: 70%;
+            height:100%;
+            float:left;
+            border-style: solid;
+            border-width: 5px;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #left-question {
+            width: 30%;
+            
+        }
+
+        #question {
+            width: 85%;
+            height: 70%;
+            margin-left: 50px;
+            margin-top:50px;
+            font-size:22px;
+            font-weight: bold;
+    
+        }
+
+        #answer {
+            width: 80%;
+            height: 80%;
+            margin-top:2%;
+    
+        }
+
+        #start_button,#questioncount {
+            margin: 50px 10px 10px 50px;
+            background-color: violet;
+            font-size: 20px;
+            text-align: center;
+            
+            width: 150px;
+            height: 50px;
+        }
+
+        input[type=radio],li
+        {
+            
+            padding-left: 35px;
+            padding-top:25px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="start">
+            <button id="start_button">start</button>
+            <p id="questioncount" style="display:none;padding-top:20px;"></p>
+        </div>
+    </div>
+
+
+    <div id="middle">
+        <div id="left-side" style="width:200px; height:100%; float:left;">
+        </div>
+        <div id="question-container">
+            <canvas id = "myChart" width="300" height="100" style="display:none"></canvas>
+            <p id="display-result"></p>
+            <div id="question">
+                <p id="display-question"></p>
+                <div id="display-options">
+                    <h3>Rules for quiz</h3>
+                    <ul>
+                        <li>You have 5 questions to answer based on js </li>
+                        <li>Click on start button to start the quiz</li>
+                        <li>press next for the next question and previous to visit previous question </li>
+                        <li>Press submit if u finish quiz </li>
+                    </ul>
+                </div>
+               
+
+            </div>
+            <div id="mid-low">
+                <button id="previous" style=" display:none;float:left;width:150px; height:60px; background-color:blueviolet; font-size: 20px;">previos</button>
+                <button id="next" style=" display:none;float:right;width:150px; height:60px; background-color:blueviolet; font-size: 20px;">Next</button>
+                <button id="submit" style=" display:none;float:right;width:150px; height:60px; background-color:blueviolet; font-size: 20px;">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="quizzy.js"></script>
+</html>

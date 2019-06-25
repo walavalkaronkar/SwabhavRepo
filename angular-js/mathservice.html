@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="angular.js"></script>
+</head>
+<body ng-app="myApp">
+    <div ng-controller="primeNumber">
+        <input type="text" ng-model="number">
+        <button ng-click='primeFunction()'>prime</button>
+        <p>{{prime}}</p>
+    </div>
+    <div ng-controller="evenNumber">
+        <input type="text" ng-model="number">
+        <button ng-click='evenFunction()'>even</button>
+        <p>{{even}}</p>
+    </div>
+
+</body>
+<script>
+
+            angular.module('myApp', [])
+            .factory("Mathservice",['$log',function($log){
+                $log.info("Inside Service");
+                var obj={};
+                obj.generatePrime= function(number){
+                    var primes =[];
+                    var value=2;
+                    while(value<=number)
+                    {
+                        let flag=true;
+                       
+                        for(let temp=2;temp<=value/2;temp++)
+                        {
+                            if(value%temp ==0)
+                            {
+                                flag=false;
+                                break; 
+                            }
+                        }
+                        if(flag)
+                        {
+                            primes.push(value);
+                        }
+                        value++;
+                    }
+                    return primes;
+                }
+
+                obj.evennumber=function(number)
+                {
+                    let even=[];
+                    let value=2;
+                    while(number>=value)
+                    {
+                        if(value%2==0)
+                        {
+                            even.push(value);
+                        }
+                        value++;
+                    }
+                    return even;
+                }
+
+                return obj;
+            }])
+            .controller('primeNumber',['$scope','Mathservice',function($scope,Mathservice) 
+            {
+                $scope.number;
+                $scope.primeFunction=function()
+                    {
+                        console.log("prime")
+                        $scope.prime=[];
+                        $scope.my=11;
+                        $scope.prime=Mathservice.generatePrime($scope.number);
+                    }
+            }
+            ])
+            .controller('evenNumber',['$scope','Mathservice',function($scope,Mathservice) 
+            {
+                $scope.number;
+                $scope.evenFunction=function()
+                {
+                    console.log("even")
+                    $scope.even=[];
+                    $scope.even=Mathservice.evennumber($scope.number);
+
+                }
+            }
+            ]);
+
+                
+</script>
+</html>

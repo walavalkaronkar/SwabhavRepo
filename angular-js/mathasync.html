@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="angular.js"> </script>
+</head>
+<body ng-app="mathapp">
+    <div ng-controller="Mathcontroller">
+
+    </div>
+    
+</body>
+<script>
+    
+        angular.module("mathapp",[])
+                .factory('Mathservice',['$q','$log',function($q,$log)
+                {
+                    let obj={};
+                    obj.isEven= function(num){
+                        return $q ((resolve,reject)=>
+                        {
+                            if(num%2==0)
+                            {
+                                resolve(true);
+                            }
+                            else{
+                                reject("not even");
+                            }
+                        })
+                    }
+                    return obj;
+                }])
+
+                .controller('Mathcontroller',['$scope','Mathservice', async function($scope,Mathservice){
+                     let response=await Mathservice.isEven(12);
+                     console.log(response);/*.then((r) =>
+                    {
+                        console.log(r);
+                    });*/
+
+                }]);
+
+</script>
+</html>

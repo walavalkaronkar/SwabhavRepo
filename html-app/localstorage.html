@@ -1,0 +1,22 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <p id="para1"></p>
+
+        <script>
+                if(typeof(Storage) !== undefined){
+                    localStorage.setItem("firstName","Onkar");
+                    localStorage.lastName="Walavalkar";
+    
+                    var firstName=localStorage.getItem("firstName");
+                    var lastName=localStorage.getItem("lastName");
+                    document.getElementById("para1").innerHTML=""+firstName+" "+lastName;
+                }
+                else{
+                    document.getElementById("para1").innerHTML="Browser not support";
+                }
+            </script>
+    </body>
+</html>

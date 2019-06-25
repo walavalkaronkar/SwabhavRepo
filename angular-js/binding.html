@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="angular.js"></script>
+    <title>Document</title>
+</head>
+<body ng-app="binding">
+    <div ng-controller="myfunction">
+        <h1>One way binding</h1>
+        <div>
+            Name:{{student.name}}<br>
+            Cgpa:{{student.cgpa}}<br>
+            Id:{{student.id}}<br>
+        
+        <div >
+            <h1>
+                Two way binding
+            </h1>
+            <input type="text" ng-model="student.id" placeholder="Enter the id"><br>
+            <input type="text" ng-model="student.name" placeholder="enter the name"><br>
+            <input type="text" ng-model="student.cgpa"><br>
+        </div>
+
+
+        <h1>One time binding</h1>
+        <div>
+                Name:{{::student.name}}<br>
+                Cgpa:{{::student.cgpa}}<br>
+                Id:{{::student.id}}<br>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+<script>
+    angular.module('binding',[])
+            .controller("myfunction",function($scope)
+            {
+                $scope.student={
+                    id:"101",
+                    name:"onkar",
+                    cgpa:"6"
+                }
+                console.log(Object.create)
+            })
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <title>Document</title>
+    <script>
+        angular.module('ModuleA',['ModuleB'])
+                .controller('ControllerA',function($scope,$injector)
+                {
+                    console.log($scope);
+                    console.log($injector);
+                    $scope.messageA="hello message by controllerA";
+                });
+        angular.module('ModuleB',['ModuleC'])
+                .controller('ControllerB',function($scope,$injector)
+                {
+                    console.log($scope);
+                    console.log($injector);
+                    $scope.messageB="hello message by controllerB";
+                });
+        angular.module('ModuleC',[ ])
+                .controller('ControllerC',function($scope,$injector)
+                {
+                    console.log($scope);
+                    console.log($injector);
+                    $scope.messageC="hello message by controllerC";
+                });
+    </script>
+</head>
+
+
+
+<body ng-app="ModuleA">
+    <div ng-controller="ControllerA">
+        {{messageA}}
+    </div>
+    <div ng-controller="ControllerB">
+        {{messageB}}
+    </div>
+    <div ng-controller="ControllerC">
+        {{messageC}}
+    </div>
+</body>
+</html>

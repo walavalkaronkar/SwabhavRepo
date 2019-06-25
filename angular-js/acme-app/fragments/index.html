@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../../angular.js"></script>
+    <script src="../../angular-route.js"></script>
+    <script src="../angular-sanitize.js"></script>
+    <script src="../app/acme.js"></script>
+    <script src="../app/productservice.js"></script>
+    <script src="../app/welcomeController.js"></script>
+    <script src="../app/productdetailsController.js"></script>
+    <script src="../app/productlistController.js"></script>
+    <style>
+        #table-list {
+            width: 70%;
+        }
+
+        span.stars,
+        span.stars span {
+            display: block;
+            /* Download the star image here: http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css */
+            background: url('https://apppresser.com/wp-content/uploads/2015/11/stars.png') 0 -16px repeat-x;
+            width: 80px;
+            height: 16px;
+        }
+
+        span.stars span {
+            background-position: 0 0;
+        }
+
+
+        .welcome-box {
+            margin: 50px 125px 50px 125px;
+            border: 1px solid #3385ff;
+            width: 80%;
+        }
+
+        .welcome-box-inner {
+            width: 100%;
+            height: 10%;
+            margin: 0px;
+            background-color: #3385ff
+        }
+
+        .welcome-box-image {
+            height: 60%;
+
+        }
+    </style>
+</head>
+
+<body ng-app="acmeApp">
+
+    <nav class="navbar" style="background-color:whitesmoke;color:black">
+        <div class="container-fluid" style="color:black">
+            <ul class="nav navbar-nav">
+                <li><a href="#" style="color:black">Acme Product Management</a></li>
+                <li><a href="#!/" style="color:black">Home</a></li>
+                <li> <a href="#!/productList" style="color:black">Product-List</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div ng-view>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<html>
+    <body>
+
+    </body>
+    <script>
+    /*
+        function Employee(firstName,LastName)
+        {
+            this.firstName=firstName;
+            this.LastName=LastName;
+
+            this.display=function()
+            {
+                var that=this;
+                setTimeout(function(){
+                        console.log(that);
+                        console.log(that.firstName);
+                        console.log(that.LastName);
+                    }
+                )
+            }   
+        }
+        var c1=new Employee("abc","xyz");
+        c1.display();
+
+
+        var f1=() => {
+            console.log("Inside around");
+            return "hello";
+        }
+        console.log(f1());
+
+        var f2=()=>"hello function";
+        console.log(f2());
+
+        //Settime out
+        setTimeout(()=>{
+            console.log("Inside timeOut")
+        },1000);
+
+        
+
+        function Student(firstName,lastName)
+        {
+            this.firstName=firstName;
+            this.lastName=lastName;
+
+            this.display=() =>{
+
+                setTimeout(()=>{
+                    console.log("after timeout");
+                    console.log(this.firstName);
+                    console.log(this.lastName);
+                },3000);
+                console.log(this.firstName);
+                console.log(this.lastName);
+            }
+        }
+        var student=new Student("abcd","xyzw");
+        student.display();
+        */
+
+        // callback with arrow
+
+        function getData()
+        {
+            var r=Math.random()*100;
+            callback(r);
+        }
+        getData((r)=>{
+            console.log("Inside the call back ");
+            }
+        )
+
+       
+       
+    </script>
+
+</html>
