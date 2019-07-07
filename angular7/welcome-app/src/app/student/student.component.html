@@ -1,0 +1,14 @@
+<section>
+    <p>{{student.name}}</p>
+    <input type="text" value="{{student.name}}" [ngModel]="student.name" (ngModelChange)="nameChange($event)">
+    <input type="text" value="{{student.name}}" [(ngModel)]="student.name">
+    <p [style.background-color]="convertTocolor()">{{student['cgpa']}}</p>
+    <p [innerHTML]="student.location"></p>
+    <img [src]="student.profilepic" [style.height]="maxHeight" [style.width]="maxWidth"/>
+    <br><hr/>
+    <input type="button" value="loadCourse" (click)="loadCourses()">
+
+    <ul>
+        <li *ngFor="let item of courses"><p>{{item.id}} &nbsp; &nbsp; &nbsp; {{item.name}}</p></li>
+    </ul>
+</section>

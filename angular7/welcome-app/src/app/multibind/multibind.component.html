@@ -1,0 +1,42 @@
+<div class="container">
+    <p [style.font-size]="fontSize+'px'" [style.font-style]="fontStyle" [style.background-color]="backgroundColor" [style.color]="fontColor" style="  ">
+        {{message}}
+    </p>
+    
+    <br>
+    Enter the font size:
+    <input type="number" [(ngModel)]="fontSize">
+    <br>
+    Choose the font style
+    <select [(ngModel)]="fontStyle">
+        <option value="normal">Normal</option>
+        <option value="italic">Italics</option>
+        <option value="oblique">Oblique</option>
+    </select>
+    <br>
+    Choose background Colour
+    <select [(ngModel)]="backgroundColor">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="cyan">Cyan</option>
+        <option value="magenta">Magenta </option>
+    </select>
+
+    <br>
+    Choose Font Color 
+    <select [(ngModel)]="fontColor">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="yellow">Yellow</option>
+        <option value="cyan">Cyan</option>
+        <option value="magenta">Magenta </option>
+    </select>
+    <br>
+    Enter the number
+    <input type="number" [ngModel]="Evennumber" (ngModelChange)="cubeEvenNumber($event)">
+    <p>{{result}}</p>
+
+    <input type="number" [ngModel]="numberApi" (ngModelChange)="numbersApiFunction($event)">
+    <p>{{numberResult}}</p>
+</div>

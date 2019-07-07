@@ -1,0 +1,32 @@
+<style>
+    div.container {
+        border: 1px solid royalblue;
+        padding: 0px;
+    }
+</style>
+<div class="container">
+    <h2 style="background-color: royalblue;color:white; margin:0px;padding:10px;">ProductList</h2>
+    <div>
+        <table class="table table-hover">
+            <tr>
+                <th><button class="button primary-button">show Image</button></th>
+                <th> Products</th>
+                <th>Code</th>
+                <th>Avaliable</th>
+                <th>Price</th>
+                <th>5 star Rating</th>
+            </tr>
+            <tr *ngFor="let product of products">
+               
+                <td><img src="{{product.imageUrl}}" width="50px" height="50px"></td>
+                <td>  <a [routerLink]="['/productsdetails',product.productCode]" > {{product.productName}} </a></td>
+                <td>{{product.productCode}}</td>
+                <td>{{product.releaseDate}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.starRating}}</td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>

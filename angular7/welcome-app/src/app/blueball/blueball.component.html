@@ -1,0 +1,24 @@
+<div class="container" style="border:1px solid black;" *ngIf="hideRules">
+    <div style="text-align: center;font-size: 15px;">
+        Rules for the game:<br>
+        1.You have only 5 chance to guess correct ball.<br>
+        2.if you chose ball which is less than correct ball then ball will turn red.<br>
+        3.if you chose ball which is less than correct ball then ball will turn green.<br>
+        4.if you choose perfect ball the ball will turn blue.<br>
+        5.if yor cannot find ball in 5 turns or within 15 secounds correct ball will be turn blue.<br>
+    </div>
+
+</div>
+
+<div style="text-align: center">
+    <h2>
+    <span style="float:left;margin-left: 5%">Number of Turns {{turn}} </span>
+    <span style="float:right;margin-right: 5%">Time Left {{counter}} </span>
+    </h2>
+    <button class="btn btn-primary"  (click)="startGame()">start</button>
+</div>
+
+<div>
+    <input type="button" class="mybutton" *ngFor="let i of Numberarray " [disabled]="disablebutton"
+        (click)="checkBall(i )" [style.background-color]="color[i-1]" value="{{i}}">
+</div>

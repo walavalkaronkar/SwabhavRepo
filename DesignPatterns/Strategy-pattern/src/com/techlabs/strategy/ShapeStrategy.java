@@ -13,5 +13,5 @@ public class ShapeStrategy {
 
 	   public void executeStrategy(){
 	      shape.draw();
-	   }
+	   }	
 }

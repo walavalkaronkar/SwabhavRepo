@@ -1,0 +1,49 @@
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+
+
+<div style="text-align: center">
+    <h3>Number of student: {{resultLength}}</h3>
+</div>
+
+<div class="container">
+        <input [(ngModel)]="searchText" placeholder="search text goes here">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>age</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>isMale</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of result  | searchPipe : {name:searchText};">
+                <td>{{item.id}}</td>
+                <td>{{item.rollNo}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.isMale | GenderPipe}}</td>
+                <td><button (click)="EditData(item.id)" class="btn btn-info btn-sm">
+                       <p class="glyphicon glyphicon-edit"></p>
+                    </button>
+                </td>
+                <td>
+                    <button (click)="deleteStudent(item.id)" class="btn btn-info btn-sm">
+                        <p class="glyphicon glyphicon-trash"></p>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

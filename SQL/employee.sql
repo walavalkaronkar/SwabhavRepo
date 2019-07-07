@@ -53,4 +53,98 @@ select * from EMP where JOB='CLERK';
 /*Display unique DEPTNO from employee table*/
 select Distinct DEPTNO  from emp;
 
+select SAL from EMP where ENAME="SCOTT";
+
+
+select * from EMP where SAL IN(select SAL from EMP where ENAME="SCOTT");
+
+select count(EMPNO) AS COUNT, AVG(SAL) AS AVERAGE,SUM(SAL) AS SUM_SALARY FROM EMP;
+
+select * from EMP where DEPTNO IN(select DEPTNO from EMP where ENAME="BLAKE");
+
+/*DeptWise no of employees*/
+select count(DEPTNO),DEPTNO from EMP group by DEPTNO;
+
+/*JOBWise no of employees*/
+select count(JOB),JOB from EMP group by JOB;
+
+/*DEPT wise jobwise Number of location*/
+select count(DEPTNO),DEPTNO,JOB 
+from EMP 
+GROUP BY DEPTNO,JOB  
+having count(DEPTNO)>=2 
+order by DEPTNO DESC;
+
+select count(DEPTNO),DEPTNO,SAL 
+from EMP 
+GROUP BY DEPTNO,SAL 
+order by DEPTNO;
+
+
+
+select count(DEPTNO),DEPTNO,JOB 
+from EMP 
+where DEPTNO=10 OR DEPTNO=20
+GROUP BY DEPTNO,JOB  
+having count(DEPTNO)>=2 
+order by DEPTNO DESC;
+
+/*INNER JOIN* on dept and emp table*/
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO;
+
+/* FULL OUTER JOIN*/
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+RIGHT JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO 
+UNION
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+LEFT JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO;
+
+/*LEFT OUTER JOIN   display all dept name with employee name if any*/
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+LEFT JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO;
+
+/*diaplay dept number*/
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+LEFT JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO
+where LOWER(ENAME) is NULL;
+
+/*RIGHT OUTER JOIN*/
+select LOWER(ENAME),LOWER(DNAME)
+FROM DEPT 
+RIGHT JOIN EMP
+ON DEPT.DEPTNO=EMP.DEPTNO;
+
+
+
+select e.ENAME as employee, m.ENAME as manager
+FROM EMP e
+LEFT JOIN Emp m
+On e.MGR=m.EMPNO
+where m.ENAME is NOT NULL;
+
+
+select ENAME ,DNAME
+FROM DEPT
+JOIN EMP
+ON  DEPT.DEPTNO=EMP.DEPTNO;
+
+/*JOIN on three tables*/
+select e.ENAME as employee, m.ENAME as manager,DNAME
+FROM EMP e
+LEFT JOIN Emp m
+On e.MGR=m.EMPNO
+JOIN DEPT
+ON  e.DEPTNO=DEPT.DEPTNO;
+
 
