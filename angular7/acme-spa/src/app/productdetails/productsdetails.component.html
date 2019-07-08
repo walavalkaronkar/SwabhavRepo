@@ -1,0 +1,62 @@
+<style>
+    div.container {
+        border: 1px solid royalblue;
+        padding: 0px;
+
+    }
+
+    div.col1 {
+        width: 45%;
+        margin: 3%;
+        height: 100%;
+        background-color: saddlebrown;
+        float: left;
+    }
+
+    div.col2 {
+        width: 40%;
+        margin: 3%;
+        height: 100%;
+        background-color: saddlebrown;
+        float: left;
+    }
+</style>
+
+<div class="container">
+    <h2 style="background-color: royalblue; margin:0px">Product Detail : {{"name"}}</h2>
+
+
+    <div class="row">
+        <div class=".col-md-6 .col-sm-6 .col-lg-6 col1">
+            <table>
+                <tr>
+                    <td>Name</td>
+                    <td>{{product.productName}}</td>
+                </tr>
+                <tr>
+                    <td>Code</td>
+                    <td>{{product.productCode }}</td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>{{product.productCode}}</td>
+                </tr>
+                <tr>
+                    <td>Avaliability</td>
+                    <td>{{product.releaseDate}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{{product.price}}}</td>
+                </tr>
+                <tr>
+                    <td>5 star Rating</td>
+                    <td>{{product.starRating}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class=".col-md-6 .col-sm-6 .col-lg-6 col2" style="background-color: salmon">
+            img
+        </div>
+    </div>
+</div>
