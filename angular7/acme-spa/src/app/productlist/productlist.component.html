@@ -7,23 +7,26 @@
 <div class="container">
     <h2 style="background-color: royalblue;color:white; margin:0px;padding:10px;">ProductList</h2>
     <div>
+        <input [(ngModel)]="searchText" placeholder="search text goes here">
         <table class="table table-hover">
-            <tr>
-                <th><button class="button primary-button">show Image</button></th>
+            <tr style="text-align: center">
+                <th><button class="btn btn-primary" (click)="showhideImage()">{{DisplayText}} Image</button></th>
                 <th> Products</th>
                 <th>Code</th>
                 <th>Avaliable</th>
                 <th>Price</th>
                 <th>5 star Rating</th>
             </tr>
-            <tr *ngFor="let product of products">
-               
-                <td><img src="{{product.imageUrl}}" width="50px" height="50px"></td>
-                <td>  <a [routerLink]="['/productsdetails',product.productCode]" > {{product.productName}} </a></td>
+            <tr *ngFor="let product of products | searchPipe : {productName:searchText};">
+
+                <td><img src="{{product.imageUrl}}" *ngIf="show" width="50px" height="50px"></td>
+                <td> <a [routerLink]="['/productsdetails',product.productCode]"> {{product.productName}} </a></td>
                 <td>{{product.productCode}}</td>
                 <td>{{product.releaseDate}}</td>
                 <td>{{product.price}}</td>
-                <td>{{product.starRating}}</td>
+                <td>
+                    <star-rating [rating]="product.starRating"></star-rating>
+                </td>
             </tr>
 
         </table>

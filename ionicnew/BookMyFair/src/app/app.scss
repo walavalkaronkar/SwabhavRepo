@@ -1,0 +1,60 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These 
+// styles are for the entire app and not just one component. Additionally, this 
+// file can hold Sass mixins, functions, and placeholder classes to be imported 
+// and used throughout the application.
+
+
+#otp-input-text
+{
+    border:0.5px solid gray;
+}
+
+.alert-message.sc-ion-alert-md
+{
+    margin:0%;
+    padding:0%;
+}
+.alert-message
+{
+    
+    margin:7%;
+    margin-top:15%;
+    margin-bottom: 10%;
+    padding:1%;
+}
+.alert-head.sc-ion-alert-md 
+{
+    padding:10%;
+}
+
+.alert-title.sc-ion-alert-md
+{
+    text-align: center;
+    padding:0px;
+}
+.alert-button-group.sc-ion-alert-md
+{
+    width:88%;
+    margin:5%;
+    padding:0%;
+    background-color: black;
+    text-align:center;
+    justify-content: center;  
+}
+
+.alert-button-inner.sc-ion-alert-md
+{
+    color:gold;
+}
+div.alert-head{
+    background-color: gold;
+    justify-content: center;
+    text-align: center;   
+}
+
+.alert-button.ion-focusable.ion-activatable.sc-ion-alert-md
+{
+    margin:0% 10% 0% 10%;
+}

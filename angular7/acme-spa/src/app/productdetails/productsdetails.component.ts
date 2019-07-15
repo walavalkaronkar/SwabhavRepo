@@ -17,6 +17,7 @@ export class ProductsDetailsComponent{
         this.route.paramMap.subscribe(p=>{this.id =p.get('id')});
         console.log(this.id);
         this.getProducts();
+        
     }
 
     getProducts()
@@ -25,24 +26,30 @@ export class ProductsDetailsComponent{
             .then((r)=>{
             this.products=r;
             console.log(this.products);
+            this.getDetails();
             })
             .catch((err)=>
             {
             console.log(err);
             })
+            
     }
 
     getDetails()
     {
+        console.log(this.id);
         for(let value=0;value<this.products.length;value++)
         {
-            if(this.id == this.products)
+            if(this.id == this.products[value].productCode)
             {
+                this.product.description=this.products[value].description;
+                this.product.imageUrl=this.products[value].imageUrl;
                 this.product.productName=this.products[value].productName;
                 this.product.productCode=this.products[value].productCode;
                 this.product.releaseDate=this.products[value].releaseDate;
                 this.product.price=this.products[value].price;
                 this.product.starRating=this.products[value].starRating;
+                console.log(this.product);
             }
         }
     }

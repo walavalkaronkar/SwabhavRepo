@@ -11,6 +11,7 @@ import { ProductsDetailsComponent } from './productdetails/productsdetails.compo
 import { ProductListComponent } from './productlist/productlist.component';
 import { ProductService } from './service/product.service';
 import { StarComponent } from './star/star.component';
+import { SearchPipes } from './service/searchPipe.pipe';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,8 @@ import { StarComponent } from './star/star.component';
     WelcomeComponent,
     ProductListComponent,
     ProductsDetailsComponent,
-    StarComponent
-    
+    StarComponent,
+    SearchPipes
   ],
   imports: [
     BrowserModule,

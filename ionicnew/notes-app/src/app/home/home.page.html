@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Notes App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="has-header ">
+
+  <div class="ion-padding" *ngIf="content">
+    <ion-reorder-group (ionItemReorder)="doReorder($event)" disabled="true">
+      <ion-item-sliding *ngFor="let item of notes;let i=index" class="ion-margin-top ion-margin-bottom">
+
+        <ion-item (click)="onclick(item.id)" detail="{{reoderdisplay}}">
+          <ion-label class="ion-no-margin ion-no-padding">
+            <ion-text>
+              <h2>{{item.title}}</h2>
+            </ion-text>
+
+
+            <ion-text>
+              <p>{{item.note}}</p>
+            </ion-text>
+          </ion-label>
+          <ion-reorder slot="end"></ion-reorder>
+        </ion-item>
+
+
+        <ion-item-options side="end">
+          <ion-item-option (click)="delete(i)" expandable color="danger">delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-reorder-group>
+  </div>
+  <div class="ion-padding" *ngIf="display">
+    <ion-card>
+      <ion-card-content>No Items to display</ion-card-content>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="newItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar style="text-align:center">
+    <ion-button horizontal="center" color="light" class="ion-margin-right" (click)="toggleReorderGroup()">
+      <ion-icon name="repeat" ></ion-icon>Rearrange
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

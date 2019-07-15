@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 
 @Component
@@ -9,6 +9,9 @@ import { Component } from "@angular/core";
 
 export class StarComponent
 {
+    @Input()
+    rating:number;
+    
     constructor()
     {
         console.log("star component")

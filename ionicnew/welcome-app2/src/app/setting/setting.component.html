@@ -1,0 +1,10 @@
+<ion-content>
+    <div style="text-align: center;width:100%;background-color: gold; padding:16px">OTP Verification</div>
+    <ion-input placeholder="Enter OTP here" [(ngModel)]="otp" name="Otp"></ion-input>
+    
+    <button style="margin:10px;padding:11px;width:90px;background-color: gold"  (click)="Resend()">Resend</button>
+    <button style="margin:10px;padding:11px;width:90px;background-color: gold"  (click)="Verify()">Verify</button>
+    
+   <button style="text-align: center;width:100%;background-color: black; padding:16px; margin-top:12px;color: gold;background-color: black;" (click)="cancel()">Cancel</button>
+
+</ion-content>

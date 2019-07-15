@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            New Item
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class=" has-header">
+    <div class="ion-padding">
+        
+        <div style="border:1px solid black">
+            <ion-item class="ion-text-center">
+                <ion-label>Title</ion-label>
+            </ion-item>
+
+            <ion-item>
+                <ion-input type="text" value="{{Note.title}}" placeholder="Enter the title here" [(ngModel)]="Note.title"></ion-input>
+            </ion-item>
+        </div>
+        <div style="border:1px solid black">
+            <ion-item class="ion-text-center">
+                <ion-label>Note</ion-label>
+            </ion-item>
+            <ion-item class="ion-padding-none">
+                <ion-textarea [(ngModel)]="Note.note" placeholder="Enter the note here" rows="5" cols="20"></ion-textarea>
+            </ion-item>
+        </div>
+    </div>
+
+    <ion-button expand="block"  (click)="save()">Save</ion-button>
+</ion-content>

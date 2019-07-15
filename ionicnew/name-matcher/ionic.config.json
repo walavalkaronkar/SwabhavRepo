@@ -1,0 +1,7 @@
+{
+  "name": "name-matcher",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

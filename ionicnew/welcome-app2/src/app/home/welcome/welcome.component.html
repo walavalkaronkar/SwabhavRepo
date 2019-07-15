@@ -1,0 +1,27 @@
+
+
+<ion-content>
+
+    <ion-toolbar>
+        <ion-buttons slot="secondary">
+            <ion-button color="primary" (click)="onClick()">
+                <ion-icon slot="icon-only" name="contact"></ion-icon>
+            </ion-button>
+            <ion-button (click)="onClick()">
+                <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-button (click)="onClick()" color="primary">button</ion-button>
+    </ion-toolbar>
+
+    <h2>
+            <a [routerLink]="[ '/home' ]">Home</a>
+    </h2>
+    <p>{{title}}</p>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>welcome footer</ion-title>
+    </ion-toolbar>
+</ion-footer>

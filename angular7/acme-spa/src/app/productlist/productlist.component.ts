@@ -9,11 +9,14 @@ import { ProductService } from '../service/product.service';
 
 export class ProductListComponent{
     products:any=[];
+    DisplayText:string="Show";
+    show:boolean=true;
     constructor(private productservice:ProductService)
     {
         this.getProducts();
 
     }
+
     getProducts()
     {
         this.productservice.getProducts()
@@ -25,5 +28,20 @@ export class ProductListComponent{
             {
             console.log(err);
             })
+    }
+
+    showhideImage()
+    {
+        if(this.show)
+        {
+            this.show=false;
+            this.DisplayText="Hide";
+        }
+        else
+        {
+            this.show=true;
+            this.DisplayText="Show";
+        }
+
     }
 }
