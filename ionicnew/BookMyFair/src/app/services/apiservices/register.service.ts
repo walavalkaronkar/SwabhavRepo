@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { MainUrlService } from './mainurl.service';
 import { HttpClient } from '@angular/common/http';
+import { UtlityService } from './Utility.service';
+import { StorageService } from './storage.service';
+import { ConstantService } from './constant.service';
 
 
 @Injectable()
@@ -9,7 +12,8 @@ export class RegisterService
     url:string="";
     eventUrl:string="/visitors/event/";
     visitorDetails:any;
-    constructor(public mainUrlSerice:MainUrlService,private http: HttpClient)
+    constructor(public mainUrlSerice:MainUrlService,private http: HttpClient,private UtlityService:UtlityService,
+        private storageService:StorageService,private constantservice:ConstantService)
     {
 
     }
@@ -18,7 +22,7 @@ export class RegisterService
 
         this.url=this.mainUrlSerice.getURL();
         this.url+=this.eventUrl+id;
-        console.log(this.url);
+        (this.url);
 
         return new Promise((resolve,reject)=>{
             this.http.post(this.url,data)
@@ -29,12 +33,16 @@ export class RegisterService
                 resolve(result);
             })
             .catch((error)=>{
-                console.log(error);
+                this.UtlityService.log(error);
                 reject(error);
             })
         })
     }
 
+    storeVisitorsDetails()
+    {
+        this.storageService.setVisitorDetails(this.visitorDetails);
+    }
     getVisitorID()
     {
         return this.visitorDetails.id;

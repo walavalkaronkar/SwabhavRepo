@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { MainUrlService } from './mainurl.service';
 import { HttpClient } from '@angular/common/http';
 import { RegisterService } from './register.service';
+import { LoginService } from './login.service';
+import { UtlityService } from './Utility.service';
 
 @Injectable()
 export class OTPService
@@ -10,7 +12,8 @@ export class OTPService
     visitorId:string="";
     otp:any="226485";
     data = { Action: "Send", Code: "", ReferralCode: "" }
-    constructor(public mainUrl:MainUrlService,public http:HttpClient,public registerService:RegisterService)
+    constructor(public mainUrl:MainUrlService,public http:HttpClient,public registerService:RegisterService,
+    private UtlityService:UtlityService,public loginservice:LoginService)
     {
 
     }
@@ -27,12 +30,12 @@ export class OTPService
             .toPromise()
             .then((result)=>
             {
-                console.log(result);
+                this.UtlityService.log(result);
                 this.otp=result;
             })
             .catch((error)=>
             {
-                console.log(error);
+                this.UtlityService.log(error);
             })
         })
     }
@@ -41,19 +44,22 @@ export class OTPService
     {
         this.data.Code=otp;
         this.data.Action="Verify";
-        console.log(this.data);
+        (this.data);
         
         return new Promise((resolve,reject)=>{
             this.http.post(this.url,this.data)
             .toPromise()
             .then((result)=>
             {
-                console.log(result);
+                this.UtlityService.log(result);
                 resolve(result);
+                this.registerService.storeVisitorsDetails();
+                this.loginservice.login();
+                
             })
             .catch((error)=>
             {
-                console.log(error);
+                this.UtlityService.log(error);
                 reject(error);
             })
         })

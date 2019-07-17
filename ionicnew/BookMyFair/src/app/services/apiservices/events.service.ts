@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { OrganizerIdService } from './organizerId.service';
 import { HttpClient } from '@angular/common/http';
 import { MainUrlService } from './mainurl.service';
+import { UtlityService } from './Utility.service';
+import { StorageService } from './storage.service';
+import { ConstantService } from './constant.service';
 
 @Injectable()
 export class EventsService
@@ -9,7 +12,8 @@ export class EventsService
     url:string="";
     eventsUrl:string="/event/activeEvent";
     eventDetails:any=null;
-    constructor(public mainUrlservice:MainUrlService,public http:HttpClient)
+    constructor(public mainUrlservice:MainUrlService,public http:HttpClient,private UtlityService:UtlityService,
+        private storageSerice:StorageService,private constantservice:ConstantService)
     {
 
     }
@@ -17,17 +21,17 @@ export class EventsService
     getEventsDetailsFromURL()
     {
         this.url=this.mainUrlservice.getURL()+this.eventsUrl;
-        console.log("Getting Events From url",this.url);
+        this.UtlityService.log("Getting Events From url"+this.url);
         this.http.get(this.url,{responseType: 'json'})
         .toPromise()
         .then((result)=>{
            
             this.eventDetails=result;
             this.storeEventsDetails();
-            console.log(this.getEventId());
+            (this.getEventId());
         })
         .catch((error)=>{
-            console.log(error);
+            this.UtlityService.log(error);
         })
     }
 
@@ -38,12 +42,12 @@ export class EventsService
 
     storeEventsDetails()
     {
-        if (sessionStorage.getItem("eventsDetails") === null) {
-            sessionStorage.setItem('eventsDetails',JSON.stringify(this.eventDetails));
+        if (this.storageSerice.getEventsDetails() === null) {
+            this.storageSerice.setEventsDetails(this.eventDetails);
         }
         else
         {
-            sessionStorage.setItem('eventsDetails',JSON.stringify(this.eventDetails));
+            this.storageSerice.setEventsDetails(this.eventDetails);
         }
     }
 

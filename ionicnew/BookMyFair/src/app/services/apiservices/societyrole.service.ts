@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { MainUrlService } from './mainurl.service';
 import { HttpClient } from '@angular/common/http';
 import { OrganizerIdService } from './organizerId.service';
+import { UtlityService } from './Utility.service';
 
 @Injectable()
 export class SocietyRoleService
@@ -9,7 +10,7 @@ export class SocietyRoleService
     url:string="";
     societyUrl:string="/general/SocietyRole";
     result:any;
-    constructor(public mainUrlService:MainUrlService, public http:HttpClient)
+    constructor(public mainUrlService:MainUrlService, public http:HttpClient,private UtlityService:UtlityService)
     {
         
     }
@@ -26,7 +27,7 @@ export class SocietyRoleService
                     resolve(this.convertJSONRoleToArray());
                 })
                 .catch((error) => {
-                    console.log(error);
+                    this.UtlityService.log(error);
                     reject(error.message);
                 })
         });

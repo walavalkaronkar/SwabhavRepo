@@ -1,0 +1,56 @@
+
+    <div class="form-group">
+        <ion-item>
+            <ion-input class="form-control" [(ngModel)]="data.FirstName" id="firstname" name="firstname" required
+                placeholder="Enter Name" #firstname="ngModel" (focusout)="sendformData()"></ion-input>
+        </ion-item>
+
+        <div class="ion-padding-left" >
+
+            <div  class="ion-padding-left" *ngIf="(firstname.touched || registerValidate ) && firstname.errors?.required"  style="color:red">
+                FirstName is required.
+            </div>
+        </div>
+
+    </div>
+    <ion-item>
+
+        <ion-input class="form-control" [(ngModel)]="data.LastName" id="lastname" name="lastname" required
+            placeholder="Your LastName" #lastname="ngModel"  (focusout)="sendformData()"></ion-input>
+    </ion-item>
+    <div class="ion-padding-left">
+
+        <div class="ion-padding-left" *ngIf="(lastname.touched ||registerValidate) &&  lastname.errors?.required" style="color:red">
+            LastName is required.
+        </div>
+    </div>
+    <ion-item>
+        <ion-input placeholder="Your email" class="form-control" [(ngModel)]="data.EmailId" id="email" name="email"
+            required #email="ngModel"  (focusout)="sendformData()"></ion-input>
+    </ion-item>
+    <div class="ion-padding-left" >
+
+        <div class="ion-padding-left" *ngIf="(email.touched ||registerValidate) &&  email.errors?.required" style="color:red">
+            Email is required.
+        </div>
+    </div>
+    <ion-item>
+        <ion-input placeholder="Your Mobile" class="form-control" [(ngModel)]="data.MobileNo" id="mobileNumber"
+            name="mobileNumber" required #mobileNumber="ngModel"  (focusout)="sendformData()"></ion-input>
+    </ion-item>
+    <div class="ion-padding-left">
+
+        <div class="ion-padding-left" *ngIf="(mobileNumber.touched ||registerValidate) &&  mobileNumber.errors?.required" style="color:red">
+            Mobile Number is required.
+        </div>
+    </div>
+    <ion-item>
+        <ion-input placeholder="Pin Code" class="form-control" [(ngModel)]="data.Pincode" id="pincode" name="pincode"
+            required #pincode="ngModel"  (focusout)="sendformData()"></ion-input >
+    </ion-item>
+    <div class="ion-padding-left">
+
+        <div class="ion-padding-left" *ngIf="(pincode.touched ||registerValidate) &&  pincode.errors?.required" style="color:red">
+            Pincode is required.
+        </div>
+    </div>

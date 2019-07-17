@@ -8,7 +8,7 @@ export class GetData {
     allnotes=[];
     constructor()
     {
-        console.log("service invoked")
+        ("service invoked")
     }
     getNotes()
     {

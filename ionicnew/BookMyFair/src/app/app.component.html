@@ -1,3 +1,52 @@
 <ion-app>
+  <ion-menu side="start" *ngIf="showMenu">
+    <ion-content>
+      <div style="background-color: black;color:white">
+
+
+        <ion-grid color="dark">
+          <ion-row>
+            <ion-col size="3">
+              <ion-avatar>
+                <img src="../assets/profile.png">
+              </ion-avatar>
+            </ion-col>
+            <ion-col size="9">
+              <p>walavalkaronkar@gmail.com</p>
+              <p>8378041654</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-button color="medium" class="ion-margin-start ion-padding-start ">Complete your Profile</ion-button>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-label>My Profile</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ticket History</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>My Coupons</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Refer Friends</ion-label>
+          <ion-badge color="danger" slot="end">0</ion-badge>
+        </ion-item>
+        <ion-item>
+          <ion-label>FeedBack</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Contact Us</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Terms and Condition</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
   <ion-router-outlet></ion-router-outlet>
 </ion-app>

@@ -6,4 +6,4 @@ import { RouterModule } from '@angular/router';
 
 
 
-export class HomePageModule {}
+export class RegisterModule {}

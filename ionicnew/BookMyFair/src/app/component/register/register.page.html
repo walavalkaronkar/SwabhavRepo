@@ -1,0 +1,53 @@
+<style>
+  div.alert-head {
+    background-color: gold;
+  }
+</style>
+
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-title style="text-align: center;color:black">
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="font-size: 12px;">
+
+  <form name="myform">
+    <ion-list>
+
+    <visitor-field (sendData)="GetData($event)" [registerValidate]="registervalidate"></visitor-field>
+
+      <ion-item>
+        <ion-input placeholder="Society Name" [(ngModel)]="data.Society" name="societyname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Your Society Role</ion-label>
+        <ion-select value="" [(ngModel)]="data.SocietyRole" name="societyrole">
+          <ion-select-option *ngFor="let role of roles" value="{{role}}">{{role}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Reference Code(optional)" [(ngModel)]="referenceCode" name="referencecode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <div class="ion-padding" style="width:100%">
+
+          <input type="checkbox">
+          <a>Accept terms and Conditions</a>
+
+          <ion-label>
+            <div style="text-align: center">
+              <ion-button color="warning" (click)="Register()">Register</ion-button>
+              <h3>OR</h3>
+              <ion-button color="warning">Apply for Lucky Draw</ion-button>
+            </div>
+          </ion-label>
+        </div>
+      </ion-item>
+
+    </ion-list>
+  </form>
+</ion-content>
