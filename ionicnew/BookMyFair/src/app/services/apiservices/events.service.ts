@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { OrganizerIdService } from './organizerId.service';
+import { MainService } from './main.service';
 import { HttpClient } from '@angular/common/http';
 import { MainUrlService } from './mainurl.service';
-import { UtlityService } from './Utility.service';
+import { UtilityService } from './utility.service';
 import { StorageService } from './storage.service';
 import { ConstantService } from './constant.service';
 
@@ -12,7 +12,7 @@ export class EventsService
     url:string="";
     eventsUrl:string="/event/activeEvent";
     eventDetails:any=null;
-    constructor(public mainUrlservice:MainUrlService,public http:HttpClient,private UtlityService:UtlityService,
+    constructor(public mainUrlservice:MainUrlService,public http:HttpClient,private UtilityService:UtilityService,
         private storageSerice:StorageService,private constantservice:ConstantService)
     {
 
@@ -21,7 +21,7 @@ export class EventsService
     getEventsDetailsFromURL()
     {
         this.url=this.mainUrlservice.getURL()+this.eventsUrl;
-        this.UtlityService.log("Getting Events From url"+this.url);
+        this.UtilityService.log("Getting Events From url"+this.url);
         this.http.get(this.url,{responseType: 'json'})
         .toPromise()
         .then((result)=>{
@@ -31,7 +31,7 @@ export class EventsService
             (this.getEventId());
         })
         .catch((error)=>{
-            this.UtlityService.log(error);
+            this.UtilityService.log(error);
         })
     }
 

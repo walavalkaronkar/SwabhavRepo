@@ -2,16 +2,18 @@ import { Injectable } from "@angular/core";
 import { MainUrlService } from './mainurl.service';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from './storage.service';
-import { UtlityService } from './Utility.service';
+import { UtilityService } from './utility.service';
 import { ConstantService } from './constant.service';
 
 @Injectable()
-export class OrganizerIdService {
+export class MainService {
     url: string = "";
+    societyUrl:string="/general/SocietyRole";
+    societyRole:any;
     organizerId: string = "";
     result: any;
     constructor(private http: HttpClient, public mainUrlService: MainUrlService,private storageSerice:StorageService,
-        private UtlityService:UtlityService,private constantservice:ConstantService) {
+        private UtilityService:UtilityService,private constantservice:ConstantService) {
         this.url = mainUrlService.getURL();
     }
 
@@ -47,7 +49,7 @@ export class OrganizerIdService {
 
     getOrganizerDetailsFromStorage() {
         this.result=this.storageSerice.getOrganizersDetails();
-        this.UtlityService.log(this.result);  
+        this.UtilityService.log(this.result);  
         this.organizerId = this.result[0].id;
         this.updateURL();
 
@@ -57,5 +59,34 @@ export class OrganizerIdService {
         this.storageSerice.setOrganizerDetails(this.result);
     }
 
+
+
+    getSocietyRoles():Promise<any>
+    {
+        this.url=this.mainUrlService.getURL();
+        this.url+=this.societyUrl;
+        return new Promise((resolve, reject) => {
+            this.http.get(this.url, { responseType: 'json' })
+                .toPromise()
+                .then((response) => {
+                    this.societyRole = response;
+                    resolve(this.convertJSONRoleToArray());
+                })
+                .catch((error) => {
+                    this.UtilityService.log(error);
+                    reject(error.message);
+                })
+        });
+    }
+
+    convertJSONRoleToArray()
+    {
+        let roles=[];
+        for(let index=0;index<this.societyRole.length;index++)
+        {
+            roles.push(this.societyRole[index].value);
+        }
+        return roles;
+    }
 
 }

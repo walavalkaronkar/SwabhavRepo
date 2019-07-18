@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { StorageService } from 'src/app/services/apiservices/storage.service';
-import { UtlityService } from 'src/app/services/apiservices/Utility.service';
+import { UtilityService } from 'src/app/services/apiservices/utility.service';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -10,7 +10,7 @@ import { MenuController } from '@ionic/angular';
 
 export class HomeComponent {
     eventsDetails:any;
-    constructor(private storageService:StorageService,private utiltyService:UtlityService,private menu: MenuController) {
+    constructor(private storageService:StorageService,private utiltyService:UtilityService,private menu: MenuController) {
         this.eventsDetails=storageService.getEventsDetails();
         utiltyService.log(this.eventsDetails);
     }

@@ -2,7 +2,7 @@
     <div class="form-group">
         <ion-item>
             <ion-input class="form-control" [(ngModel)]="data.FirstName" id="firstname" name="firstname" required
-                placeholder="Enter Name" #firstname="ngModel" (focusout)="sendformData()"></ion-input>
+                placeholder="Enter Name*" #firstname="ngModel" (focusout)="sendformData()"></ion-input>
         </ion-item>
 
         <div class="ion-padding-left" >
@@ -16,7 +16,7 @@
     <ion-item>
 
         <ion-input class="form-control" [(ngModel)]="data.LastName" id="lastname" name="lastname" required
-            placeholder="Your LastName" #lastname="ngModel"  (focusout)="sendformData()"></ion-input>
+            placeholder="Your LastName*" #lastname="ngModel"  (focusout)="sendformData()"></ion-input>
     </ion-item>
     <div class="ion-padding-left">
 
@@ -25,7 +25,7 @@
         </div>
     </div>
     <ion-item>
-        <ion-input placeholder="Your email" class="form-control" [(ngModel)]="data.EmailId" id="email" name="email"
+        <ion-input placeholder="Your email*" class="form-control" [(ngModel)]="data.EmailId" id="email" name="email"
             required #email="ngModel"  (focusout)="sendformData()"></ion-input>
     </ion-item>
     <div class="ion-padding-left" >
@@ -35,7 +35,7 @@
         </div>
     </div>
     <ion-item>
-        <ion-input placeholder="Your Mobile" class="form-control" [(ngModel)]="data.MobileNo" id="mobileNumber"
+        <ion-input placeholder="Your Mobile Number*" class="form-control" [(ngModel)]="data.MobileNo" id="mobileNumber"
             name="mobileNumber" required #mobileNumber="ngModel"  (focusout)="sendformData()"></ion-input>
     </ion-item>
     <div class="ion-padding-left">
@@ -45,7 +45,7 @@
         </div>
     </div>
     <ion-item>
-        <ion-input placeholder="Pin Code" class="form-control" [(ngModel)]="data.Pincode" id="pincode" name="pincode"
+        <ion-input placeholder="Pin Code*" class="form-control" [(ngModel)]="data.Pincode" id="pincode" name="pincode"
             required #pincode="ngModel"  (focusout)="sendformData()"></ion-input >
     </ion-item>
     <div class="ion-padding-left">

@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
-import { OTPService } from 'src/app/services/apiservices/otp.service';
-import { RegisterService } from 'src/app/services/apiservices/register.service';
-import { UtlityService } from 'src/app/services/apiservices/Utility.service';
+import { VisitorService } from 'src/app/services/apiservices/visitor.service';
+import { UtilityService } from 'src/app/services/apiservices/utility.service';
 
 @Component({
   selector: 'otp',
@@ -15,31 +14,31 @@ export class OtpPopUpComponent implements OnInit {
   otp:string="";
   invalid:boolean=false;
   isLoading:boolean=false;
-  constructor(private modalController: ModalController,public otpService:OTPService,public registerService:RegisterService,
-    private UtlityService:UtlityService,public loadingController:LoadingController) 
+  constructor(private modalController: ModalController,public visitorService:VisitorService,private UtilityService:UtilityService,
+    public loadingController:LoadingController) 
   { }
 
   ngOnInit() {
-    this.UtlityService.log("called");
-    this.otpService.sendOTP(this.registerService.getVisitorID());
+    this.UtilityService.log("called");
+    this.visitorService.sendOTP(this.visitorService.getVisitorID());
 
 
   }
 
   Resend()
   {
-    this.otpService.sendOTP(this.registerService.getVisitorID());
+    this.visitorService.sendOTP(this.visitorService.getVisitorID());
   }
 
   Verify()
   {
     
-    this.invalid=!(this.otpService.compareOTP(this.otp));
+    this.invalid=!(this.visitorService.compareOTP(this.otp));
     (this.invalid)
     if(this.invalid==false)
     {
 
-      this.otpService.verifyOTP(this.otp);
+      this.visitorService.verifyOTP(this.otp);
       this.cancel();
     }
   }

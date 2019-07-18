@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Platform, LoadingController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { OrganizerIdService } from './services/apiservices/organizerId.service';
+import { MainService } from './services/apiservices/main.service';
 import { Router } from '@angular/router';
 import { StorageService } from './services/apiservices/storage.service';
 

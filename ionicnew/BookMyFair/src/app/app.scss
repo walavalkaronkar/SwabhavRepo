@@ -36,17 +36,20 @@
 }
 .alert-button-group.sc-ion-alert-md
 {
-    width:88%;
+  
     margin:5%;
     padding:0%;
-    background-color: black;
+   
     text-align:center;
     justify-content: center;  
 }
 
 .alert-button-inner.sc-ion-alert-md
 {
+    background-color: black;
     color:gold;
+    width:100%;
+    margin:0px;
 }
 div.alert-head{
     background-color: gold;

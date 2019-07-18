@@ -12,17 +12,14 @@ import { OtpPopUpComponent } from './component/otpPopUp/otpPopUp.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './component/register/register.page';
 import { MainUrlService } from './services/apiservices/mainurl.service';
-import { OrganizerIdService } from './services/apiservices/organizerId.service';
-import { SocietyRoleService } from './services/apiservices/societyrole.service';
+import { MainService } from './services/apiservices/main.service';
 import { HttpClientModule } from '@angular/common/http';
-import { RegisterService } from './services/apiservices/register.service';
+import { VisitorService } from './services/apiservices/visitor.service';
 import { EventsService } from './services/apiservices/events.service';
-import { OTPService } from './services/apiservices/otp.service';
-import { LoginService } from './services/apiservices/login.service';
 import { HomeComponent } from './component/homepage/home.component';
 import { ConstantService } from './services/apiservices/constant.service';
 import { VisitorFieldComponent } from './component/visitorfield/visitorfield.component';
-import { UtlityService } from './services/apiservices/Utility.service';
+import { UtilityService } from './services/apiservices/utility.service';
 import { StorageService } from './services/apiservices/storage.service';
 import { LoaderService } from './services/apiservices/loader.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
@@ -36,14 +33,11 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     MainUrlService,
-    OrganizerIdService,
-    SocietyRoleService,
-    RegisterService,
+    MainService,
+    VisitorService,
     EventsService,
-    OTPService,
-    LoginService,
     ConstantService,
-    UtlityService,
+    UtilityService,
     StorageService,
     LoaderService,
     Keyboard

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ModalController, LoadingController } from '@ionic/angular';
 import { OtpPopUpComponent } from '../otpPopUp/otpPopUp.component';
-import { OrganizerIdService } from 'src/app/services/apiservices/organizerId.service';
-import { SocietyRoleService } from 'src/app/services/apiservices/societyrole.service';
-import { RegisterService } from 'src/app/services/apiservices/register.service';
+import { MainService } from 'src/app/services/apiservices/main.service';
+
+import { VisitorService } from 'src/app/services/apiservices/visitor.service';
 import { EventsService } from 'src/app/services/apiservices/events.service';
-import { UtlityService } from 'src/app/services/apiservices/Utility.service';
+import { UtilityService } from 'src/app/services/apiservices/utility.service';
 import { StorageService } from 'src/app/services/apiservices/storage.service';
 import { LoaderService } from 'src/app/services/apiservices/loader.service';
 import { ConstantService } from 'src/app/services/apiservices/constant.service';
@@ -16,7 +16,8 @@ import { ConstantService } from 'src/app/services/apiservices/constant.service';
   styleUrls: ['register.page.scss'],
 })
 export class RegisterComponent {
-  registervalidate=false;
+  registervalidate = false;
+  termsCondition: boolean = false;
   roles: any;
   data = {
     FirstName: "",
@@ -34,13 +35,13 @@ export class RegisterComponent {
   isLoading: boolean;
 
   constructor(private navCtrl: NavController, private alertCtrl: AlertController, private modalController: ModalController,
-    public organizeIDService: OrganizerIdService, public loadingController: LoadingController, public societyRoleService: SocietyRoleService,
-    public registerService: RegisterService, public eventsService: EventsService,private utlityService:UtlityService,
-    private storageSerice:StorageService,private loaderService:LoaderService,private constantService:ConstantService) {
+    public organizeIDService: MainService, public loadingController: LoadingController, public mainService: MainService,
+    public visitorService: VisitorService, public eventsService: EventsService, private UtilityService: UtilityService,
+    private storageSerice: StorageService, private loaderService: LoaderService, private constantService: ConstantService) {
 
     if (this.storageSerice.getOrganizersDetails() === null) {
       this.loaderService.Loader();
-      this.utlityService.log("No Organizer ID");
+      this.UtilityService.log("No Organizer ID");
       this.getOrganizerID();
     }
     else {
@@ -52,26 +53,26 @@ export class RegisterComponent {
   }
 
   getOrganizerID() {
-    
+
     this.organizeIDService.getOrganizerIdFromUrl()
       .then((r) => {
-        this.utlityService.log(r);
+        this.UtilityService.log(r);
         this.getSocietyRole();
         this.getEvents();
       })
       .catch((error) => {
-        this.utlityService.log(error);
+        this.UtilityService.log(error);
         this.loaderService.dismiss();
-        this.utlityService.createAlert('Alert', error,'OK');
+        this.UtilityService.createAlert('Alert', error, 'OK');
       })
   }
 
   getSocietyRole() {
-    this.societyRoleService.getSocietyRoles()
+    this.mainService.getSocietyRoles()
       .then((result) => {
         this.loaderService.dismiss();
         this.roles = result;
-        this.utlityService.log(this.roles);
+        this.UtilityService.log(this.roles);
       })
       .catch((error) => {
         this.loaderService.dismiss();
@@ -80,7 +81,7 @@ export class RegisterComponent {
   }
 
   getEvents() {
-    this.utlityService.log("GetEvent function called");
+    this.UtilityService.log("GetEvent function called");
     this.eventsService.getEventsDetailsFromURL();
   }
 
@@ -94,56 +95,49 @@ export class RegisterComponent {
     await modal.onWillDismiss();
   }
 
-  GetData(data)
-  {
-    this.utlityService.log(data);
-    this.data.FirstName=data.FirstName;
-    this.data.LastName=data.LastName;
-    this.data.EmailId=data.EmailId;
-    this.data.MobileNo=data.MobileNo;
-    this.data.Pincode=data.Pincode;
+  GetData(data) {
+    this.UtilityService.log(data);
+    this.data.FirstName = data.FirstName;
+    this.data.LastName = data.LastName;
+    this.data.EmailId = data.EmailId;
+    this.data.MobileNo = data.MobileNo;
+    this.data.Pincode = data.Pincode;
 
   }
 
   async Register() {
 
-    this.registervalidate=true;
-    this.utlityService.log("Regsiter");
-
-    if (this.data.FirstName == "") {
-      this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter the First Name.<p>', 'Close');
-    }
-    else if (this.data.LastName == "") {
-      this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter the Last Name.</p>', 'Close');
-    }
-    else if (this.data.EmailId == "") {
-      this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter the Email.</p>', 'Close');
-    }
-    else if (this.data.EmailId != "") {
+    this.registervalidate = true;
+    if (this.data.EmailId != "") {
       let x = this.data.EmailId;
       let atposition = x.indexOf("@");
       let dotposition = x.lastIndexOf(".");
       if (atposition < 1 || dotposition < atposition + 2 || dotposition + 2 >= x.length) {
-        this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter the Valid Email.</p>', 'Close');
+        this.UtilityService.createAlert('Alert', '<p class="alert-message">Please enter the Valid Email.</p>', 'Close');
+        return;
       }
-      else if (this.data.MobileNo == "") {
-        this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter theMobile Number.</p>', 'Close');
+      if (this.data.FirstName != "" && this.data.LastName != "" && this.data.EmailId != "" && this.data.MobileNo != ""
+        && this.data.Pincode != "" && this.termsCondition == true) {
+        this.UtilityService.log("registered");
+        this.visitorService.registerVisitor(this.eventsService.getEventId(), this.data)
+          .then((result) => {
+            this.UtilityService.log(result);
+            this.UtilityService.createAlert('Congratulations!!!', '<p class="alert-message"><b>You are just a step away from visiting the Exhibition! Enter the One time Verification code (OTP) sent to your Email Id/Phone Number.</b> </p>', { text: "Ok", handler: () => { this.OtpBox(); } });
+          })
+          .catch((error) => {
+            this.UtilityService.log(error);
+          })
       }
-      else if (this.data.Pincode == "") {
-        this.utlityService.createAlert('Alert', '<p class="alert-message">Please enter the Pin Code.</p>', 'Close');
-      }
-      else {
-        this.utlityService.log("registered");
-        this.registerService.registerVisitor(this.eventsService.getEventId(),this.data)
-        .then((result)=>{
-          this.utlityService.log(result);
-          this.utlityService.createAlert('Congratulations!!!', '<p class="alert-message"><b>You are just a step away from visiting the Exhibition! Enter the One time Verification code (OTP) sent to your Email Id/Phone Number.</b> </p>', {text: "Ok",handler: () => {this.OtpBox();}});
-        })
-        .catch((error)=>{
-          this.utlityService.log(error);
-        })
-        
-      }
+    }
+
+  }
+
+  toggleTermsAndCondition(event) {
+    if (event.target.checked) {
+      this.termsCondition = true;
+    }
+    else {
+      this.termsCondition = false;
     }
   }
 }

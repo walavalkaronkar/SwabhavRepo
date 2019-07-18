@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { LoadingController } from '@ionic/angular';
-import { UtlityService } from './Utility.service';
+import { UtilityService } from './utility.service';
 
 @Injectable()
 export class LoaderService
 {
     isLoading:boolean=true;
-    constructor(private loadingController:LoadingController,private UtlityService:UtlityService)
+    constructor(private loadingController:LoadingController,private UtilityService:UtilityService)
     {
         
     }
@@ -20,7 +20,7 @@ export class LoaderService
           a.present().then(() => {
             ('presented');
             if (!this.isLoading) {
-              a.dismiss().then(() =>this.UtlityService.log('abort presenting'));
+              a.dismiss().then(() =>this.UtilityService.log('abort presenting'));
             }
           });
         });
@@ -28,6 +28,6 @@ export class LoaderService
       
       async dismiss() {
         this.isLoading = false;
-        return await this.loadingController.dismiss().then(() => this.UtlityService.log('dismissed'));
+        return await this.loadingController.dismiss().then(() => this.UtilityService.log('dismissed'));
       }
 }

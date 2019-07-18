@@ -4,7 +4,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 
 @Injectable()
-export class UtlityService {
+export class UtilityService {
     constructor(private toastController: ToastController,private keyboard: Keyboard,private alertController:AlertController) {
     }
 
