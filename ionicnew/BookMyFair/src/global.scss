@@ -9,11 +9,13 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+
 
 .modal-wrapper.sc-ion-modal-md
 {
     width:275px;
-    height: 265px;
+    height: 250px;
 }
 
 

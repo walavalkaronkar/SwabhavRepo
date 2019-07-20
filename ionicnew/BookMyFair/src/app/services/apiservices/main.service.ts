@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { MainUrlService } from './mainurl.service';
+
 import { HttpClient } from '@angular/common/http';
-import { StorageService } from './storage.service';
-import { UtilityService } from './utility.service';
-import { ConstantService } from './constant.service';
+import { StorageService } from '../storage.service';
+import { UtilityService } from '../utility.service';
+import { ConstantService } from '../constant.service';
 
 @Injectable()
 export class MainService {
@@ -12,9 +12,9 @@ export class MainService {
     societyRole:any;
     organizerId: string = "";
     result: any;
-    constructor(private http: HttpClient, public mainUrlService: MainUrlService,private storageSerice:StorageService,
-        private UtilityService:UtilityService,private constantservice:ConstantService) {
-        this.url = mainUrlService.getURL();
+    constructor(private http: HttpClient,private storageSerice:StorageService, private UtilityService:UtilityService,
+        private constantservice:ConstantService) {
+        this.url = constantservice.getURL();
     }
 
 
@@ -24,8 +24,8 @@ export class MainService {
 
     updateURL() {
         this.url = this.url + "/" + this.organizerId;
-        this.mainUrlService.setURL(this.url);
-        (this.mainUrlService.getURL())
+        this.constantservice.setURL(this.url);
+        (this.constantservice.getURL())
     }
     
     getOrganizerIdFromUrl(): Promise<string> {
@@ -63,7 +63,7 @@ export class MainService {
 
     getSocietyRoles():Promise<any>
     {
-        this.url=this.mainUrlService.getURL();
+        this.url=this.constantservice.getURL();
         this.url+=this.societyUrl;
         return new Promise((resolve, reject) => {
             this.http.get(this.url, { responseType: 'json' })

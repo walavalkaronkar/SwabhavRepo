@@ -1,21 +1,110 @@
+<ion-header main>
+    <ion-toolbar color="warning" style="color:black">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Book My Fair</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div *ngIf="isDataAvaliable" class="full-height">
+        <div class="container-fluid home-header">
+            <div class="row" style="text-align: center">
+                <div class="col">
+                    <h5>{{eventsDetails.name}}</h5>
+                </div>
+            </div>
+            <div class="row" style="text-align: center">
+                <div class="col">
+                    <h6>{{eventsDetails.startDate}} to {{eventsDetails.endDate}}</h6>
+                </div>
 
-
-    <ion-header main>
-        <ion-toolbar color="warning" style="color:black">
-            <ion-buttons slot="start">
-                <ion-menu-button></ion-menu-button>
-            </ion-buttons>
-            <ion-title >Book My Fair</ion-title>
-        </ion-toolbar>
-    </ion-header>
-    <ion-content>
-
-        <div class="container" style="background-color:gold;padding-bottom:10%;text-align: center">
-            <h5 style="margin-top: 0px;padding-top:5%">{{eventsDetails.name}}</h5>
-            <h6>{{eventsDetails.startDate}} to {{eventsDetails.endDate}}</h6>
+            </div>
         </div>
+        <div class="container image-container">
+            <div class="row img-container">
+                <div class="col-12">
 
-    </ion-content>
+                    <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav
+                        (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+                        <ion-slide *ngFor="let s of sliderOne.slidesItems">
+                            <img src="{{s.url}}" style="width:100%;">
 
+                            <div class="img-header">
+                                <h6>Upcoming Exhibition</h6>
+                            </div>
+                            <div class="exhibition-name">
+                                <h5>{{eventsDetails.name}}</h5>
+                            </div>
+                            <div class="exhibition-date">
+                                <h6>{{eventsDetails.startDate}} to {{eventsDetails.endDate}}</h6>
+                            </div>
+                            <div class="details">
+                                <button class="btn btn-outline-light">View
+                                    Details</button>
+                            </div>
+                        </ion-slide>
+                    </ion-slides>
 
+                </div>
+            </div>
 
+            <div class="row" style="margin:2%">
+                <button class="mybuttons" style="margin-left:5%;"> <img src="../../../assets/img/bookticket.png"
+                        style="width:20%;height:20%">Book Ticket</button>
+                <div class="col-1"></div>
+                <button class="mybuttons"><img src="../../../assets/img/refer.png" style="width:20%;height:20%">
+                    Refer</button>
+            </div>
+
+            <div class="grid-menu">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/profile.png">
+                        <p>Profile</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/exhibitors.png">
+                        <p>Exhibitors</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/tag.png">
+                        <p>Discounts</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/events.png">
+                        <p>Events</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/ticket_history.png">
+                        <p>Ticket History</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/luckydraw.png">
+                        <p>Lucky Draw</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/gallery.png">
+                        <p>Gallery</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/unique_products.png">
+                        <p>Unique Items</p>
+                    </div>
+                    <div class="col-4">
+                        <img src="../../../assets/img/logos/feedback.png">
+                        <p>Feedback</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+
+        </div>
+    </div>
+</ion-content>

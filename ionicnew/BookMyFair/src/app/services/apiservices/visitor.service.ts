@@ -1,9 +1,8 @@
 import { Injectable } from "@angular/core";
-import { MainUrlService } from './mainurl.service';
 import { HttpClient } from '@angular/common/http';
-import { UtilityService } from './utility.service';
-import { StorageService } from './storage.service';
-import { ConstantService } from './constant.service';
+import { UtilityService } from '../utility.service';
+import { StorageService } from '../storage.service';
+import { ConstantService } from '../constant.service';
 import { Router } from '@angular/router';
 
 
@@ -15,16 +14,15 @@ export class VisitorService {
     data = { Action: "Send", Code: "", ReferralCode: "" }
     eventUrl: string = "/visitors/event/";
     visitorDetails: any;
-    constructor(public mainUrlSerice: MainUrlService, private http: HttpClient, private UtilityService: UtilityService,
-        private storageService: StorageService, private constantservice: ConstantService,private router:Router,
-        private mainUrl: MainUrlService) {
+    constructor( private http: HttpClient, private UtilityService: UtilityService,
+        private storageService: StorageService, private constantService: ConstantService,private router:Router) {
 
     }
 
     //Register Related Methods
     registerVisitor(id, data): Promise<any> {
 
-        let url = this.mainUrlSerice.getURL();
+        let url = this.constantService.getURL();
         this.UtilityService.log("Main url from register service"+url);
         url += this.eventUrl + id;
         this.UtilityService.log("Main url from register service"+url);
@@ -59,7 +57,7 @@ export class VisitorService {
     {
         this.visitorId = this.getVisitorID();
         this.visitorId = id;
-        let url = this.mainUrl.getURL() + "/visitors/" + this.visitorId + "/Activation";
+        let url = this.constantService.getURL() + "/visitors/" + this.visitorId + "/Activation";
 
         return new Promise((resolve, reject) => {
             this.http.post(url, this.data)
@@ -77,7 +75,7 @@ export class VisitorService {
     verifyOTP(otp) {
         this.data.Code = otp;
         this.data.Action = "Verify";
-        let url = this.mainUrl.getURL() + "/visitors/" + this.visitorId + "/Activation";
+        let url = this.constantService.getURL() + "/visitors/" + this.visitorId + "/Activation";
 
         return new Promise((resolve, reject) => {
             this.http.post(url, this.data)
@@ -109,7 +107,7 @@ export class VisitorService {
 
     //login related methods
     login() {
-        let url = this.mainUrlSerice.getURL();
+        let url = this.constantService.getURL();
         let visitorDetails = this.storageService.getVisitorDetails();
         url = url + "/Login/visitorLogin/visitor/" + visitorDetails.id;
         this.UtilityService.log(url);

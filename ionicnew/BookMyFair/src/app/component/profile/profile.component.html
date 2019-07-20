@@ -1,0 +1,60 @@
+<ion-header main>
+    <ion-toolbar color="warning" style="color:black">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div class="container-fluid" style="background-color: gold; text-align: center">
+        <div class="row">
+            <div style="justify-content: center;width:100%;height:100%;margin-top:2%;">
+                <img src="../../../assets/img/icons/profile_placeholder.png" style="width:20%; height:20%;">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size: 13px">Profile 90% Completed</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size: 13px">{{visitorsDetails.emailId}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p style="font-size: 13px">{{visitorsDetails.mobileNo}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <b style="font-size: 13px">Mega Card Consumer Number: {{visitorsDetails.megaConsumerCardNo}}</b>
+            </div>
+        </div>
+    </div>
+
+    <form name="myform">
+        <ion-list>
+            <visitor-field (sendData)="GetData($event)" [registerValidate]="registerValidate"></visitor-field>
+            
+            <ion-item>
+                <ion-input placeholder="Society Name" [(ngModel)]="data.Society" name="societyname"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Your Society Role</ion-label>
+                <ion-select value="" [(ngModel)]="data.SocietyRole" name="societyrole">
+                    <ion-select-option *ngFor="let role of roles" value="{{role}}">{{role}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-input placeholder="Reference Code(optional)" [(ngModel)]="referenceCode" name="referencecode">
+                </ion-input>
+            </ion-item>
+        </ion-list>
+    </form>
+
+</ion-content>

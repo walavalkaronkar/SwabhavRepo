@@ -17,7 +17,7 @@
   <form name="myform">
     <ion-list>
 
-    <visitor-field (sendData)="GetData($event)" [registerValidate]="registervalidate"></visitor-field>
+    <visitor-field (sendData)="GetData($event)" [registerValidate]="registerValidate"></visitor-field>
 
       <ion-item>
         <ion-input placeholder="Society Name" [(ngModel)]="data.Society" name="societyname"></ion-input>
@@ -35,8 +35,15 @@
       <ion-item>
         <div class="ion-padding" style="width:100%">
 
-          <input class="terms-checkbox" type="checkbox" (change)="toggleTermsAndCondition($event)">
+          <input class="terms-checkbox" type="checkbox" (change)="toggleTermsAndCondition($event)" required >
           <a>Accept terms and Conditions</a>
+          <br>
+          <div class="ion-padding-left">
+
+            <div class="ion-padding-left" *ngIf="(registerValidate && !(termsCondition))" style="color:red;font-size: 12px;">
+              Please Accept terms and condtion
+            </div>
+        </div>
 
           <ion-label>
             <div style="text-align: center">

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
 import { VisitorService } from 'src/app/services/apiservices/visitor.service';
-import { UtilityService } from 'src/app/services/apiservices/utility.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'otp',

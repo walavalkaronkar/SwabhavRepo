@@ -20,7 +20,7 @@
 {
     
     margin:7%;
-    margin-top:15%;
+    margin-top:10%;
     margin-bottom: 10%;
     padding:1%;
 }
@@ -36,20 +36,26 @@
 }
 .alert-button-group.sc-ion-alert-md
 {
-  
-    margin:5%;
     padding:0%;
    
     text-align:center;
     justify-content: center;  
 }
 
-.alert-button-inner.sc-ion-alert-md
+.alert-button.ion-focusable.ion-activatable.sc-ion-alert-md
 {
+
+    width:75px;
     background-color: black;
     color:gold;
-    width:100%;
-    margin:0px;
+    padding :5% 15% 5% 15%;
+    margin:5% 5% 5% 5%;
+}
+
+.alert-button-inner.sc-ion-alert-md
+{
+    text-align: center;
+    justify-content: center;
 }
 div.alert-head{
     background-color: gold;
@@ -57,10 +63,7 @@ div.alert-head{
     text-align: center;   
 }
 
-.alert-button.ion-focusable.ion-activatable.sc-ion-alert-md
-{
-    margin:0% 10% 0% 10%;
-}
+
 .toolbar-container,.header{
     background-color: gold;
 }
@@ -68,4 +71,27 @@ div.alert-head{
 .header.md.header-md.hydrated
 {
     background-color: gold;
+}
+
+.alert-radio-label.sc-ion-alert-md
+{
+    text-align: left;
+}
+
+.grid-menu-col.md.hydrated
+{
+    padding:0%;
+}
+
+p
+{
+    margin:0%;
+}
+.swiper-pagination{
+    position: relative;
+}
+.md.title-md.hydrated
+{
+    text-align: center;
+    width:80%;
 }
