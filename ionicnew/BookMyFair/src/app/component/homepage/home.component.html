@@ -6,15 +6,168 @@
         <ion-title>Book My Fair</ion-title>
     </ion-toolbar>
 </ion-header>
+
+<ion-menu side="start" *ngIf="displayMenu">
+    <ion-content>
+        <div style="background-color: black;color:white">
+
+
+            <ion-grid color="dark">
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-avatar>
+                            <img src="../assets/profile.png" style="width:100%;">
+                        </ion-avatar>
+                    </ion-col>
+                    <ion-col size="9">
+                        <p *ngIf="displayMenu">{{visitorsDetails.emailId}}</p>
+                        <p *ngIf="displayMenu">{{visitorsDetails.mobileNo}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-button color="medium" class="ion-margin-start ion-padding-start ">Complete your Profile
+                    </ion-button>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <ion-list>
+            <ion-item (click)="profile()">
+                <ion-label>My Profile</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Ticket History</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>My Coupons</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Refer Friends</ion-label>
+                <ion-badge color="danger" slot="end">0</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>FeedBack</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Contact Us</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Terms and Condition</ion-label>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+
+
 <ion-content>
+    <div class="home-container">
+        <div class="home-upper-container">
+        </div>
+        <div class="home-lower-container">
+        </div>
+        <div class=" row event-header">
+            <div class="col">
+                {{eventsDetails.name}}
+            </div>
+        </div>
+        <div class="row event-date">
+            <div class="col">
+                {{eventsDetails.startDate}} to {{eventsDetails.endDate}}
+            </div>
+
+        </div>
+        <div class="container image-container">
+            <div class="row">
+                <div class="col-12">
+
+                    <ion-slides pager="true" [options]="slideOptsOne" #slideWithNav
+                        (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+                        <ion-slide *ngFor="let s of sliderOne.slidesItems">
+                            <img src="{{s.url}}" style="width:100%;">
+
+                            <div class="img-header">
+                                Upcoming Exhibition </div>
+                            <div class="exhibition-name">
+                                {{eventsDetails.name}}
+                            </div>
+                            <div class="exhibition-date">
+                                {{eventsDetails.startDate}} to {{eventsDetails.endDate}}
+                            </div>
+                            <div class="details">
+                                <button class="btn btn-outline-light">View
+                                    Details</button>
+                            </div>
+                        </ion-slide>
+                    </ion-slides>
+
+                </div>
+            </div>
+            <div class="button-group">
+                <div class="row ">
+                    <button class="mybuttons" style="margin:1% 3%; margin-left: 7%; width:40% " (click)="bookTickets()">
+                        <img src="../../../assets/img/bookticket.png" style="width:20%;height:20%">Book Ticket</button>
+                    <button class="mybuttons" style="margin:1% 3%; width:40% "><img src="../../../assets/img/refer.png"
+                            style="width:20%;height:20%">
+                        Refer</button>
+                </div>
+                <div class="container grid-menu">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/profile.png">
+                            <p>Profile</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/exhibitors.png">
+                            <p>Exhibitors</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/tag.png">
+                            <p>Discounts</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/events.png">
+                            <p>Events</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/ticket_history.png">
+                            <p>Ticket History</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/luckydraw.png">
+                            <p>Lucky Draw</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/gallery.png">
+                            <p>Gallery</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/unique_products.png">
+                            <p>Unique Items</p>
+                        </div>
+                        <div class="col-4">
+                            <img src="../../../assets/img/logos/feedback.png">
+                            <p>Feedback</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
     <div *ngIf="isDataAvaliable" class="full-height">
         <div class="container-fluid home-header">
-            <div class="row" style="text-align: center">
+            <div class="row">
                 <div class="col">
                     <h5>{{eventsDetails.name}}</h5>
                 </div>
             </div>
-            <div class="row" style="text-align: center">
+            <div class="row">
                 <div class="col">
                     <h6>{{eventsDetails.startDate}} to {{eventsDetails.endDate}}</h6>
                 </div>
@@ -107,4 +260,5 @@
 
         </div>
     </div>
+    -->
 </ion-content>

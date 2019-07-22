@@ -21,7 +21,6 @@ import { EventsService } from './services/apiservices/events.service';
 
 export class AppComponent {
   isLoading: boolean;
-  showMenu: boolean = true;
   displayMenu:boolean=false;
   visitorsDetails;
   constructor(
@@ -78,7 +77,6 @@ export class AppComponent {
         return;
       }
       this.router.navigate(['/home']);
-      this.getMenusDetails();
       this.utilityService.dismiss();
     
     })
@@ -86,18 +84,6 @@ export class AppComponent {
       console.log(error);
       this.utilityService.dismiss();
     })
-  }
-
-  getMenusDetails()
-  {
-    this.visitorsDetails=this.storageService.getVisitorDetails();
-    this.displayMenu=true;
-  }
-
-  profile()
-  {
-    this.router.navigate(['/profile']);
-    this.menu.close();
   }
 
 

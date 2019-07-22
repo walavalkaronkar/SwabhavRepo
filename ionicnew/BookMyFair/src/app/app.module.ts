@@ -21,9 +21,11 @@ import { UtilityService } from './services/utility.service';
 import { StorageService } from './services/storage.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { ProfileComponent } from './component/profile/profile.component';
+import { TicketsService } from './services/apiservices/tickets.service';
+import { ShowTicketsComponent } from './component/showtickets/showtickets.component';
 
 @NgModule({
-  declarations: [AppComponent,OtpPopUpComponent,RegisterComponent,HomeComponent,VisitorFieldComponent,ProfileComponent],
+  declarations: [AppComponent,OtpPopUpComponent,RegisterComponent,HomeComponent,VisitorFieldComponent,ProfileComponent,ShowTicketsComponent],
   entryComponents: [OtpPopUpComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule],
   providers: [
@@ -36,6 +38,7 @@ import { ProfileComponent } from './component/profile/profile.component';
     ConstantService,
     UtilityService,
     StorageService,
+    TicketsService,
     Keyboard
     
   ],
