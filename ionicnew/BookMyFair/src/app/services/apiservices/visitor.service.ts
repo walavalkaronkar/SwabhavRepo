@@ -41,6 +41,7 @@ export class VisitorService {
         })
     }
 
+
     storeVisitorsDetails() {
         this.storageService.setVisitorDetails(this.visitorDetails);
     }
@@ -48,6 +49,29 @@ export class VisitorService {
         return this.visitorDetails.id;
     }
 
+    //Update Visitor
+    updateVisitorDetails(data)
+    {
+        this.visitorDetails=this.storageService.getVisitorDetails();
+        console.log(this.visitorDetails.id);
+        let url=this.constantService.getURL()+"/visitors/"+this.visitorDetails.id;
+        console.log(url);
+        data.id=this.visitorDetails.id;
+        return new Promise((resolve, reject) => {
+            this.http.put(url, data)
+                .toPromise()
+                .then((result) => {
+                    this.visitorDetails = result;
+                    console.log(result)
+                    resolve(result);
+                })
+                .catch((error) => {
+                    this.UtilityService.log(error);
+                    console.log(error);
+                    reject(error);
+                })
+        })
+    }
 
 
     //Otp related methods

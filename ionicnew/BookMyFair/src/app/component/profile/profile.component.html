@@ -16,45 +16,88 @@
         </div>
         <div class="row">
             <div class="col">
-                <p style="font-size: 13px">Profile 90% Completed</p>
+                <p style="font-size: 2.0vh">Profile 90% Completed</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p style="font-size: 13px">{{visitorsDetails.emailId}}</p>
+                <p style="font-size: 2.0vh">{{visitorsDetails.emailId}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p style="font-size: 13px">{{visitorsDetails.mobileNo}}</p>
+                <p style="font-size: 2.0vh">{{visitorsDetails.mobileNo}}</p>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <b style="font-size: 13px">Mega Card Consumer Number: {{visitorsDetails.megaConsumerCardNo}}</b>
+                <b style="font-size: 2.0vh">Mega Card Consumer Number: {{visitorsDetails.megaConsumerCardNo}}</b>
             </div>
         </div>
     </div>
 
-    <form name="myform">
-        <ion-list>
-            <visitor-field (sendData)="GetData($event)" [registerValidate]="registerValidate"></visitor-field>
-            
-            <ion-item>
-                <ion-input placeholder="Society Name" [(ngModel)]="data.Society" name="societyname"></ion-input>
-            </ion-item>
+    <div>
+        <form name="myform" class="well center-block">
+            <div class="form-group">
+                <label for="referralCode" style="margin-left:4%;">Referral Code</label>
+                <input type="text" class="form-control" [(ngModel)]="visitorsDetails.referralCode" id="referralCode"
+                    name="referralCode" placeholder=" " disabled>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label style="margin-left: 4%;">Gender</label>
+                <div class="custom-control custom-radio custom-control-inline" style="margin-left: 4%;">
+                    <input type="radio" class="custom-control-input" id="Male" name="Gender" [(ngModel)]="sendData.gender"
+                        value="false">
+                    <label class="custom-control-label" for="Male">Male</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="Female" name="Gender" [(ngModel)]="sendData.gender"
+                        value="true">
+                    <label class="custom-control-label" for="Female">Female</label>
+                </div>
+            </div>
+
+            <visitor-field (sendData)="getDataFromTemplate($event)" [data]="sendData" [registerValidate]="registerValidate">
+            </visitor-field>
 
             <ion-item>
                 <ion-label>Your Society Role</ion-label>
-                <ion-select value="" [(ngModel)]="data.SocietyRole" name="societyrole">
+                <ion-select value="" [(ngModel)]="sendData.SocietyRole" name="societyrole">
                     <ion-select-option *ngFor="let role of roles" value="{{role}}">{{role}}</ion-select-option>
                 </ion-select>
             </ion-item>
-            <ion-item>
-                <ion-input placeholder="Reference Code(optional)" [(ngModel)]="referenceCode" name="referencecode">
-                </ion-input>
-            </ion-item>
-        </ion-list>
-    </form>
 
+            <ion-item>
+                <ion-label>Education</ion-label>
+                <ion-select value="" [(ngModel)]="sendData.Education" name="education">
+                    <ion-select-option value="None">None</ion-select-option>
+                    <ion-select-option value="Primary">Primary</ion-select-option>
+                    <ion-select-option value="Secondary">Secondary</ion-select-option>
+                    <ion-select-option value="Graduate">Graduate</ion-select-option>
+                    <ion-select-option value="Post Graduate">Post Graduate</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Income</ion-label>
+                <ion-select value="" [(ngModel)]="sendData.Income" name="income">
+                    <ion-select-option value="10000-25000">10000-25000</ion-select-option>
+                    <ion-select-option value="25000-50000">25000-50000</ion-select-option>
+                    <ion-select-option value="50000-70000">50000-70000</ion-select-option>
+                    <ion-select-option value="70000 and above">70000 and above</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </form>
+    </div>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-title><button class="update-button" (click)="update()">Update</button></ion-title>
+
+    </ion-toolbar>
+</ion-footer>

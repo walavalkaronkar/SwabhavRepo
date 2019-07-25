@@ -95,3 +95,14 @@ p
     text-align: center;
     width:80%;
 }
+.inner-scroll.scroll-y
+{
+    background-color: #E8E8E8;
+    display:none;
+}
+
+.swiper-zoom-container>canvas, .swiper-zoom-container>img, .swiper-zoom-container>svg 
+{
+    max-width: 150%;
+    max-height: 150%
+}

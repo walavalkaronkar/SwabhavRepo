@@ -1,316 +1,131 @@
-/*.container-fluid.home-header
+.height-100
 {
-    background-color:gold;
-    text-align: center;
-    padding:1%;
-    padding-bottom: 25%;
-    position: relative;
-}
-
-.options-menu
-{
-    position :absolute;
-    top:55%;
-}
-
-img {
-    width: 55%;
-    object-fit: inherit;
-    object-position: inherit;
-}
-.grid-menu
-{
-    margin-top:7%;
-    background-color:white;
-    text-align: center;
-    justify-content: center;
-    bottom:5%;   
-}
-.menu-name
-{
-    margin-top:0px;
-}
-.grid-menu-col
-{
-    text-align: center;
-}
-
-.mybuttons
-{
-    background-color:gold;
-    width:40%;
-    height:40% ;
-    padding:3% 0%;
-    border-radius: 5%;
-}
-.container-fluid
-{
-    padding:0px;
-}
-
-.button-group
-{
-    position:absolute;
-    top:45%;
-}
-.img-container {
-    position: relative;
-    text-align: center;
-    color: white;
-  }
-  .img-header
-  {
-      position: absolute;
-      top:10%;
-      left:50%;
-      width:90%;
-      transform: translate(-50%, -50%);
-    }
-  
-
-  .exhibition-name
-  {
-    position: absolute;
-    top:40%;
-    left:50%;
-    width:90%;
-    transform: translate(-50%, -50%);
-  }
-
-.exhibition-date
-{
-    position: absolute;
-    top:70%;
-    left:50%;
-    width:90%;
-    transform: translate(-50%, -50%);
-}
-.details
-{
-    position: absolute;
-    top:85%;
-    left:50%;
-    width:90%;
-    transform: translate(-50%, -50%);
-}
-
-.swiper-pagination{
-    position: relative;
-}
-
-
-.full-height
-{
-    background-color: 	 #e6e6e6;
-    width:100%;
-    height: 100%;
-    text-align: center;
-    justify-content: center;
-}
-
-.image-container
-{
-    position: absolute;
-    top:15%;
     height: 100%;
 }
-.home-container
+.height-48
 {
-    height:100%;
-    width:100%;
-    background-color: aqua;
-    text-align: center;
-    justify-content: center;
+    height: 48%;
 }
-
-.home-upper-container
-{
-    width:100%;
-    height: 30%;
-    background-color:gold;
-    position: relative;
-}
-.home-lower-container
-{
-    width:100%;
-    height:70%;
-    background-color: lightgray;
-    position: relative;
-}
-
-
-.event-header
-{
-    position: absolute;
-    top:2%;
-    left:0%;
-    right:0%;
-    font-size: 120%;
-}
-.event-date
-{
-    position: absolute;
-    top:12%;
-    left:0%;
-    right:0%;
-    font-size: 100%;
-}
-.image-container
-{
-    position: absolute;
-    top:18%;
-    left:0%;
-    right:0%;
-    color:white;
-    font-size: 0.8em;
-    font-weight: 500;
-    height:40%;
-}
-
-.img-header
-{
-    position: absolute;
-    top:10%;
-    left:50%;
-    width:90%;
-    font-size: 0.8em;
-    transform: translate(-50%, -50%);
-  }
-.exhibition-name
-{
-  position: absolute;
-  top:40%;
-  left:50%;
-  width:90%;
-  font-size: 0.8em;
-  transform: translate(-50%, -50%);
-}
-
-.exhibition-date
-{
-  position: absolute;
-  top:70%;
-  left:50%;
-  width:90%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8em;
-}
-.details
-{
-  position: absolute;
-  top:85%;
-  left:50%;
-  width:90%;
-  transform: translate(-50%, -50%);
-  font-size: 0.8em;
-}
-
-.button-group
-{
-    position: relative; 
-    height:100%;
-}
-.mybuttons
-{
-    background-color:gold;
-    border-radius: 5%;
-}
-.btn{
-    padding:0%;
-}
-
-.grid-menu
-{
-    margin-top:7%;
-    background-color:white;
-    text-align: center;
-    justify-content: center;  
-    color:black;
-    font-weight: 400;
-    height: 100%;
-}
-img
-{
-    width:50%;
-}
-*/
-height-10
+.height-10
 {
     height: 10%;
 }
-height-30
+.height-12
+{
+    height: 12%;
+}
+.height-15
+{
+    height: 15%;
+}
+.height-30
 {
     height: 30%;
 }
-height-50
+.height-25
+{
+    height: 25%;
+}
+.height-50
 {
     height: 50%;
 }
-height-100
+.height-20
 {
-    height: 100%;
+    height: 20%;
+}
+.height-40
+{
+    height: 40%;
+}
+.background-gold{
+    background-color:gold;
+}
+.background-gray{
+    background-color:lightgray;
+}
+.background-gold-gray{
+    background-image: linear-gradient(to bottom,gold 50% , lightgray 50%);
+}
+.background-coral{
+    background-color: coral;
 }
 
-.background-gold
-{
-    background-color: gold;
-}
-
-.container-fluid
-{
-    width:100%;
-    height:100%;
-    text-align: center;
-    justify-content: center;
-    margin:0%;
-    padding: 0%;
-}
 .events-name{
-    font-size: 2.8vh;
-    margin:2%;
+    font-size: 2.6vh;
+    padding-top:3%;
+    margin:0%;
 }
 
 .events-date
 {
-    font-size: 2.8vh;
-    margin:2%;
-}
-.image-background
-{
-    background-image: linear-gradient(to bottom,gold 50% , lightgray 50%);
-}
-.background-gray
-{
-    background-color: lightgrey;
+    font-size: 2.6vh;
+    padding-top:1%;
     margin:0%;
-    padding: 0%;
 }
-.btn.btn-warning
+label
 {
-    padding:0%;
-    margin:5%;
-    width:90%;
-    height:50%;
-    padding: 0%;
+    margin-bottom: 0.5rem; 
 }
-
-.button-image
+.button-image 
 {
     height:25px;
-    width: auto;
-    padding-top: 10px;
-
 }
+.col-6
+{
+    padding:0% 0%;
+}
+.mybutton-left
+{
+    background-color: gold;
+    position: relative;
+    padding:0%;
+    margin-right: 2%;
+    margin-left: 5%;
+    border-radius: 5%;
+    
+    
+}
+.mybutton-right
+{
+    background-color: gold;
+    position: relative;
+    padding:0%;
+    margin-left: 2%;
+    margin-right: 5%;
+    border-radius: 5%;
+}
+
 .home-menu-logo
 {
-    height: 45%;
-    width: 40%;
-}
-.background-white
-{
-    background-color: white;
+    height: 200%;
 }
 .grid-menu
 {
-margin: 5%;
+    margin:0% 1% 0% 1%;
+    width:98%;
+    height: 99%;
+    background-color: white;
 }
+.image-background
+{
+    padding-top: 2%;
+    position: relative;
+}
+label
+{
+    margin-bottom: 0px; 
+}
+
+.home-background { 
+    background: url("http://megatradefair.com/mobile_images/Banner/cities_banner_490.png") no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: inherit;
+    padding: 0%;
+    margin-left: 5%;
+    width: 90%;
+}
+
+/*[ngStyle]="{'background-image':'url('+imageContainer.url+')'}"
+                    style="background-repeat: no-repeat; margin-top: 2%;height:100%; background-size: contain;
+                background-repeat: no-repeat;padding: 0.5%;background-position: center;height: 100%;background-origin: content-box; "*/
