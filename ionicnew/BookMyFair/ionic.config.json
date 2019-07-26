@@ -1,7 +1,0 @@
-{
-  "name": "BookMyFair",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
