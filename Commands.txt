@@ -41,6 +41,11 @@ Create repo on github
     9  git status
    10  git add .
    11  git status
+   $ git config user.email "walavalkaronkar@gmail.com" ---for the particular folder
+
+   $ git config --global user.email "walavalkaronkar@gmail.com" -- for all folder
+
+
    12  git commit -m 'First Commit'
    13  git log
    14  git status
